@@ -1,5 +1,5 @@
 /**
- * Negocio da classe Endereço
+ * Negocio da classe Endereï¿½o
  *
  * @author Eduardo Augusto <eduardo.agms@icloud.com>
  * @author Lucas Rezende <rezende099@icloud.com>
@@ -8,6 +8,7 @@
 
 class Aluno {
 
+    private $idEndereco;
     private $lougradouro;
     private $numero;
     private $bairro;
@@ -47,7 +48,7 @@ class Aluno {
 
     public function excluir() {
         $objeto = new pEndereco;
-        $objeto->set('', $this->);
+        $objeto->set('idEndereco', $this->idEndereco);
         $objeto->excluir();
     }
 
