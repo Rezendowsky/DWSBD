@@ -6,7 +6,7 @@
  */
 <?php
 
-class Aluno {
+class Endereco {
 
     private $idEndereco;
     private $lougradouro;
