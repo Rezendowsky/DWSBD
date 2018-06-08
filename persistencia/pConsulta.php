@@ -11,7 +11,7 @@ class pConsulta{
             $obj = new Conexao();
 
             $sql = "INSERT INTO";
-            $sql .= " CONSULTA (dataConsulta, motivo) ";
+            $sql .= " consulta (dataConsulta, motivo) ";
             $sql .= " VALUES('$this->dataConsulta', '$this->motivo') ";
 
             $obj->set('sql', $sql);

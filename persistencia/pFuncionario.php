@@ -16,7 +16,7 @@ class pFuncionario extends pPessoa{
             $obj = new Conexao();
 
             $sql = "INSERT INTO";
-            $sql .= " Funcionario (cargo, salario) ";
+            $sql .= " funcionario (cargo, salario) ";
             $sql .= " VALUES('$this->cargo', '$this->salario') ";
 
             $obj->set('sql', $sql);
@@ -31,7 +31,7 @@ class pFuncionario extends pPessoa{
         try {
             $obj = new Conexao();
             
-            $sql = "UPDATE Funcionario";
+            $sql = "UPDATE funcionario";
             $sql .= " SET cargo= '$this->cargo', salario= '$this->salario'";
             $sql .= " WHERE idFuncionario = '$this->idFuncionario'";
 
@@ -48,7 +48,7 @@ class pFuncionario extends pPessoa{
         try {
             $obj = new Conexao();
 
-            $sql = "DELETE FROM Funcionario";
+            $sql = "DELETE FROM funcionario";
             $sql .= " WHERE idFuncionario = '$this->idFuncionario'";
 
             $obj->set('sql', $sql);
