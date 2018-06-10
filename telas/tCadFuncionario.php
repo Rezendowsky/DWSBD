@@ -31,7 +31,8 @@ if (!empty($_POST)) {
 }
 ?>
 <html>
-    <head>
+    <head>        
+        <link href="style.css" rel="stylesheet" type="text/css"/>
         <script type="text/javascript">
             function editar(cod, nome, cpf, sexo, nascimento, telefone) {
                 document.frmCad.txtPessoa.value = cod;
@@ -57,9 +58,13 @@ if (!empty($_POST)) {
             Vide: Diagrama de Estado na UML
             -->
             <input type="hidden" name="txtValor" value="gravar">
-            <table>
-                <tr>
-                    <td colspan="2">Cadastro de Pessoa</td>
+            <table class="tableForm">
+<!--                <thead class="tableHeader">                    
+                    <th>Cadastro de Pessoa</th>                    
+                </thead>-->
+                
+                <tr class="tableHeader">
+                    <td class="tdHeader" colspan="6">Cadastro de Pessoa</td>
                 </tr>
                 <tr>
                     <td>Id:</td>
@@ -105,7 +110,7 @@ if (!empty($_POST)) {
                     </td>
                 </tr>
             </table>
-            <table border="1" width="380" cellspacing="1" cellpadding="1">
+            <table class="tableForm" cellspacing="1" cellpadding="1">
                 <tr>
                     <td>#</td>
                     <td>ID Pessoa</td>
