@@ -5,6 +5,8 @@
         <group>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/DWSBD/persistencia/pCronograma.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/DWSBD/persistencia/pFuncionario.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/DWSBD/telas/tCadFuncionario.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/DWSBD/telas/style.css</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/DWSBD/persistencia/pPessoa.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/DWSBD/persistencia/pEndereco.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/DWSBD/persistencia/pPaciente.php</file>

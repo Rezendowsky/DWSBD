@@ -52,6 +52,7 @@ if (!empty($_POST)) {
     </head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <body>
+        <div id="sessao">
         <form name="frmCad" method="post"
               action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <!--Variável escondida 'hidden' para manipulação do estado do formulário
@@ -104,13 +105,13 @@ if (!empty($_POST)) {
                         <input type="radio" name="rdbSexo" value="Feminino" />Feminino</td>
                 </tr>
                 <tr>
-                    <td colspan="2">
-                        <input type="submit" value="Gravar" name="btnGravar"/>
-                        <input type="reset" value="Limpar" name="btnLimpar"/>
+                    <td colspan="6">
+                        <input class="btn btnGravar" type="submit" value="Gravar" name="btnGravar"/>
+                        <input class="btn btnLimpar" type="reset" value="Limpar" name="btnLimpar"/>
                     </td>
                 </tr>
             </table>
-            <table class="tableForm" cellspacing="1" cellpadding="1">
+            <table class="tableResult" cellspacing="1" cellpadding="1">
                 <tr>
                     <td>#</td>
                     <td>ID Pessoa</td>
@@ -124,8 +125,6 @@ if (!empty($_POST)) {
                     <td>Cidade</td>
                     <td>Estado</td>
                     <td>CEP</td>
-                    <td>&emsp;</td>
-                    <td>&emsp;</td>
                 </tr>
                 <?php
                 $count = 0;
@@ -153,5 +152,6 @@ if (!empty($_POST)) {
                 ?>
             </table>
         </form>
+        </div>
     </body>
 </html>

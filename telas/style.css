@@ -11,23 +11,38 @@ and open the template in the editor.
 body {
     color: #111;
     font-family: arial, helvetica, sans-serif;
-    font-size: 10pt;       
+    font-size: 10pt;
+    display: flex;
+    margin: auto;
+    padding: 40px;
+    background: #eee;
 }
 
-/*table {
-    border-collapse: collapse;
-}*/
+table {
+    width: 800px;
+    box-shadow: 2px 1px 5px #ccc;
+    margin-top: 10px;
+    margin-bottom: 5px;    
+}
 
 .tableForm {
     background-color: #fff;
-    border: 1px solid #eee;
+    border: 1px solid #ddd;
     border-radius: 5px 5px 0 0;
-    padding: 0;
-    
+    padding: 0;    
 }
 
-td {
-    display: inline-table;
+.tableResult {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px 5px 0 0;
+    padding: 0;    
+}
+
+.tableResult td {
+    border-bottom: 1px solid #ddd;
+    border-block-start: none;
+    border-right: 1px solid #aaa;
     padding: 2px;
 }
 
@@ -35,8 +50,9 @@ td {
     background-color: lightgreen;
     color: darkgreen;
     margin: -2px;
-    border-radius: 5px 5px 0 0;
-    display: block;
+    border: 1px solid #darkgreen;
+    border-radius: 5px 0px 5px 0px;
+    display: block;    
 }
 
 
@@ -44,4 +60,30 @@ input {
     border-radius: 5px;
     border: 1px solid #ddd;
     padding: 5px;
+}
+
+#sessao {
+    margin: auto;
+    max-width: 800px;
+}
+
+.btn {
+    float: right;
+    padding: 5px;
+    font-size: 10pt;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btnGravar {    
+    background-color: #33cc33;
+    color: white;
+    border: 1px solid green;
+}
+
+.btnLimpar {
+    background-color: #ffcc00;
+    color: white;
+    border: 1px solid orange;    
 }
