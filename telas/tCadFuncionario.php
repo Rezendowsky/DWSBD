@@ -65,7 +65,7 @@ if (!empty($_POST)) {
                 </thead>-->
                 
                 <tr class="tableHeader">
-                    <td class="tdHeader" colspan="6">Cadastro de Pessoa</td>
+                    <th class="tdHeader" colspan="6">Registro de Funcionário - Novo</th>
                 </tr>
                 <tr>
                     <td>Id:</td>
@@ -80,12 +80,16 @@ if (!empty($_POST)) {
                     <td><input type="text" name="txtNome"/></td>
                     <td>Bairro:</td>
                     <td><input type="text" name="txtBairro"/></td>
+                    <td>Cargo:</td>
+                    <td><input type="text" name="txtCargo"/></td>
                 </tr>
                 <tr>
                     <td>Cpf:</td>
                     <td><input type="text" name="txtCpf"/></td>
                     <td>Cidade:</td>
                     <td><input type="text" name="txtCidade"/></td>
+                    <td>Salário:</td>
+                    <td><input type="text" name="txtSalario"/></td>
                 </tr>
                 <tr>
                     <td>Nascimento:</td>
@@ -125,6 +129,8 @@ if (!empty($_POST)) {
                     <td>Cidade</td>
                     <td>Estado</td>
                     <td>CEP</td>
+                    <td>Cargo</td>
+                    <td>Salario</td>               
                 </tr>
                 <?php
                 $count = 0;
