@@ -64,7 +64,7 @@ if (!empty($_POST)) {
                 </thead>-->
                 
                 <tr class="tableHeader">
-                    <th class="tdHeader" colspan="6">Registro de Paciente - Novo</th>
+                    <th class="tdHeader" colspan="6">Registro de Paciente</th>
                 </tr>
                 <tr>
                     <td>Id:</td>

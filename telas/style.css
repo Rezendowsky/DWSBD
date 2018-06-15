@@ -38,7 +38,11 @@ table {
     padding: 0;
 }
 
-.tableForm tr {
+/*.tableForm tr {
+    text-align: center;
+}*/
+
+#telaMenu {
     text-align: center;
 }
 

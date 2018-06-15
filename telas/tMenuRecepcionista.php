@@ -12,22 +12,24 @@ and open the template in the editor.
     </head>
     <body>
         <div id="sessao">
-            <table class="tableForm">                
-                <tr class="tableHeader">
-                    <th class="tdHeader" colspan="3">Recepcionista</th>
-                </tr>
-                <tr>
-                    <td><input class="btn btnMenu btnMenuNeutro" type="submit" value="Pesquisar Paciente" name="btnMenu"/></td>
-                    <td><input class="btn btn btnMenu btnMenuPositivo" type="submit" value="Registrar Paciente" name="btnMenu"/></td>
-                </tr>
-                <tr>
-                    <td><input class="btn btnMenu btnMenuNeutro" type="submit" value="Pesquisar Funcionário" name="btnMenu"/></td>
-                    <td><input class="btn btnMenu btnMenuPositivo" type="submit" value="Registrar Funcionario" name="btnMenu"/></td>
-                </tr>
-                <tr>
-                    <td><input class="btn btnMenu btnMenuNeutro" type="submit" value="Agendamentos" name="btnMenu"/></td>
-                    <td><input class="btn btnMenu btnMenuNeutro" type="submit" value="Tratamentos" name="btnMenu"/></td>
-                </tr>
+            <table class="tableForm">  
+                <tbody id="telaMenu">
+                    <tr class="tableHeader">
+                        <th class="tdHeader" colspan="3">Recepcionista</th>
+                    </tr>
+                    <tr>
+                        <td><input class="btn btnMenu btnMenuNeutro" type="submit" value="Pesquisar Paciente" name="btnMenu"/></td>
+                        <td><input class="btn btn btnMenu btnMenuPositivo" type="submit" value="Registrar Paciente" name="btnMenu"/></td>
+                    </tr>
+                    <tr>
+                        <td><input class="btn btnMenu btnMenuNeutro" type="submit" value="Pesquisar Funcionário" name="btnMenu"/></td>
+                        <td><input class="btn btnMenu btnMenuPositivo" type="submit" value="Registrar Funcionario" name="btnMenu"/></td>
+                    </tr>
+                    <tr>
+                        <td><input class="btn btnMenu btnMenuNeutro" type="submit" value="Agendamentos" name="btnMenu"/></td>
+                        <td><input class="btn btnMenu btnMenuNeutro" type="submit" value="Tratamentos" name="btnMenu"/></td>
+                    </tr>
+                </tbody>
             </table>            
         </div>        
         <?php
