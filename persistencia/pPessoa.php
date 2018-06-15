@@ -29,7 +29,7 @@ class pPessoa {
             $obj = new Conexao();
             
             $sql = "UPDATE pessoa";
-            $sql .= " SET nome = '$this->nomeAluno', cpf = '$this->cpf', sexo = '$this->sexo', nascimento = '$this->nascimento', telefone = '$this->telefone'";
+            $sql .= " SET nome = '$this->nome', cpf = '$this->cpf', sexo = '$this->sexo', nascimento = '$this->nascimento', telefone = '$this->telefone'";
             $sql .= " WHERE idPessoa = '$this->idPessoa'";
 
             $obj->set('sql', $sql);
