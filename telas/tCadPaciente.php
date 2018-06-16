@@ -16,15 +16,14 @@ $erro = "Ihhh... Parece que essa página esta com erro aguarde enquanto nosso de
 //Verifica se foi dado Post na Página
 if (!empty($_POST)) {
     $objeto = new Pessoa();
-    // $objeto->set('idPessoa', $_POST['txtPessoa']);
+    $objeto->set('idPessoa', $_POST['txtPessoa']);
     $objeto->set('nome', $_POST['txtNome']);
     $objeto->set('cpf', $_POST['txtCpf']);
     $objeto->set('sexo', $_POST['rdbSexo']);
     $objeto->set('nascimento', $_POST['txtNascimento']);
     $objeto->set('telefone', $_POST['txtTelefone']);
     
-    $objetoEndereco = new Endereco();
-    // $objetoEndereco->set('idEndereco', $_POST['txtEndereco']);
+    $objetoEndereco = new Endereco();    
     $objetoEndereco->set('logradouro', $_POST['txtLogradouro']);
     $objetoEndereco->set('numero', $_POST['txtNumero']);
     $objetoEndereco->set('bairro', $_POST['txtBairro']);
@@ -38,9 +37,8 @@ if (!empty($_POST)) {
     } else if ($_POST['txtValor'] == 'editar') {
         $objeto->alterar();
         $objetoEndereco->alterar();
-    } else if ($_POST['txtValor'] == 'excluir') {
+    } else if ($_POST['txtValor'] == 'excluir') {        
         $objeto->excluir();
-        $objetoEndereco->excluir();
     }
 }
 ?>
@@ -48,21 +46,21 @@ if (!empty($_POST)) {
     <head>        
         <link href="style.css" rel="stylesheet" type="text/css"/>
         <script type="text/javascript">
-            function editar(cod, nome, cpf, nascimento, telefone, sexo
-                    logradouro, numero, bairro, cidade, estado, cep) {
-                document.frmCad.txtPessoa.value = cod;
-                document.frmCad.txtNome.value = nome;
-                document.frmCad.txtCpf.value = cpf;
-                document.frmCad.txtNascimento.value = nascimento;
-                document.frmCad.txtTelefone.value = telefone;
-                document.frmCad.txtSexo.value = sexo;
-                document.frmCad.txtLogradouro.value = logradouro;
-                document.frmCad.txtNumero.value = numero;
-                document.frmCad.txtBairro.value = bairro;
-                document.frmCad.txtCidade.value = cidade;
-                document.frmCad.txtEstado.value = estado;
-                document.frmCad.txtCEP.value = cep;                
-                document.frmCad.txtValor.value = "editar";
+            function editar(cod, nome, cpf, nascimento, telefone, sexo,
+                logradouro, numero, bairro, cidade, estado, cep) {
+                    document.frmCad.txtPessoa.value = cod;
+                    document.frmCad.txtNome.value = nome;
+                    document.frmCad.txtCpf.value = cpf;
+                    document.frmCad.txtNascimento.value = nascimento;
+                    document.frmCad.txtTelefone.value = telefone;
+                    document.frmCad.txtSexo.value = sexo;
+                    document.frmCad.txtLogradouro.value = logradouro;
+                    document.frmCad.txtNumero.value = numero;
+                    document.frmCad.txtBairro.value = bairro;
+                    document.frmCad.txtCidade.value = cidade;
+                    document.frmCad.txtEstado.value = estado;
+                    document.frmCad.txtCEP.value = cep;                
+                    document.frmCad.txtValor.value = "editar";
             }
             function excluir(cod) {
                 document.frmCad.txtPessoa.value = cod;
@@ -86,40 +84,40 @@ if (!empty($_POST)) {
                 </tr>
                 <tr>
                     <td>Id:</td>
-                    <td><input readonly="true" type="text" id="txtPessoa" name="txtPessoa"/></td>
+                    <td><input readonly="true" type="text" id="txtPessoa" name="txtPessoa" /></td>
                     <td>Logradouro:</td>
-                    <td><input type="text" name="txtLogradouro"/></td>
+                    <td><input type="text" name="txtLogradouro" required/></td>
                     <td>Nº:</td>
-                    <td><input type="text" name="txtNumero"/></td>
+                    <td><input type="text" name="txtNumero" required/></td>
                 </tr>
                 <tr>
                     <td>Nome:</td>
-                    <td><input type="text" name="txtNome"/></td>
+                    <td><input type="text" name="txtNome" required/></td>
                     <td>Bairro:</td>
-                    <td><input type="text" name="txtBairro"/></td>
+                    <td><input type="text" name="txtBairro" required/></td>
                 </tr>
                 <tr>
                     <td>Cpf:</td>
-                    <td><input type="text" name="txtCpf"/></td>
+                    <td><input type="text" name="txtCpf" required/></td>
                     <td>Cidade:</td>
-                    <td><input type="text" name="txtCidade"/></td>
+                    <td><input type="text" name="txtCidade" required/></td>
                 </tr>
                 <tr>
                     <td>Nascimento:</td>
-                    <td><input type="text" name="txtNascimento"/></td>
+                    <td><input type="text" name="txtNascimento" required/></td>
                     <td>Estado:</td>
-                    <td><input type="text" name="txtEstado"/></td>
+                    <td><input type="text" name="txtEstado" required/></td>
                 </tr>
                 <tr>
                     <td>Telefone:</td>
-                    <td><input type="text" name="txtTelefone"/></td>
+                    <td><input type="text" name="txtTelefone" required/></td>
                     <td>CEP:</td>
-                    <td><input type="text" name="txtCEP"/></td>
+                    <td><input type="text" name="txtCEP" required/></td>
                 </tr>
                 <tr>
                     <td>Sexo:</td>
-                    <td><input type="radio" name="rdbSexo" value="Masculino" />Masculino
-                        <input type="radio" name="rdbSexo" value="Feminino" />Feminino</td>
+                    <td><input type="radio" name="rdbSexo" value="Masculino" checked required/>M
+                        <input type="radio" name="rdbSexo" value="Feminino" required/>F</td>
                 </tr>
                 <tr>
                     <td colspan="6">
