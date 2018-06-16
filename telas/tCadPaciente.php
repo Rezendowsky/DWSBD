@@ -4,8 +4,8 @@
 //0 - Desabilita o Apache a Emitir Erro na tela
 ini_set("display_errors", 1);
 
-include '../negocio/pessoa.php';
 include '../persistencia/Conexao.php';
+include '../negocio/pessoa.php';
 include '../persistencia/pPessoa.php';
 include '../negocio/Endereco.php';
 include '../persistencia/pEndereco.php';
@@ -16,7 +16,7 @@ $erro = "Ihhh... Parece que essa página esta com erro aguarde enquanto nosso de
 //Verifica se foi dado Post na Página
 if (!empty($_POST)) {
     $objeto = new Pessoa();
-    $objeto->set('idPessoa', $_POST['txtPessoa']);
+    // $objeto->set('idPessoa', $_POST['txtPessoa']);
     $objeto->set('nome', $_POST['txtNome']);
     $objeto->set('cpf', $_POST['txtCpf']);
     $objeto->set('sexo', $_POST['rdbSexo']);
@@ -24,14 +24,13 @@ if (!empty($_POST)) {
     $objeto->set('telefone', $_POST['txtTelefone']);
     
     $objetoEndereco = new Endereco();
-    $objetoEndereco->set('idEndereco', $_POST['txtEndereco']);
+    // $objetoEndereco->set('idEndereco', $_POST['txtEndereco']);
     $objetoEndereco->set('logradouro', $_POST['txtLogradouro']);
     $objetoEndereco->set('numero', $_POST['txtNumero']);
-    $objetoEndereco->set('bairro', $_POST['txrBairro']);
+    $objetoEndereco->set('bairro', $_POST['txtBairro']);
     $objetoEndereco->set('cidade', $_POST['txtCidade']);
     $objetoEndereco->set('estado', $_POST['txtEstado']);
-    $objetoEndereco->set('cep', $_POST['txtCEP']);
-    $objetoEndereco->set('fkPessoa', $_POST['txtPessoa']);
+    $objetoEndereco->set('cep', $_POST['txtCEP']);    
 
     if ($_POST['txtValor'] == 'gravar') {
         $objeto->incluir();
@@ -62,7 +61,7 @@ if (!empty($_POST)) {
                 document.frmCad.txtBairro.value = bairro;
                 document.frmCad.txtCidade.value = cidade;
                 document.frmCad.txtEstado.value = estado;
-                document.frmCad.txtCEP.value = cep;
+                document.frmCad.txtCEP.value = cep;                
                 document.frmCad.txtValor.value = "editar";
             }
             function excluir(cod) {
@@ -81,17 +80,13 @@ if (!empty($_POST)) {
             Vide: Diagrama de Estado na UML
             -->
             <input type="hidden" name="txtValor" value="gravar">
-            <table class="tableForm">
-<!--                <thead class="tableHeader">                    
-                    <th>Cadastro de Pessoa</th>                    
-                </thead>-->
-                
+            <table class="tableForm">                
                 <tr class="tableHeader">
                     <th class="tdHeader" colspan="6">Registro de Paciente</th>
                 </tr>
                 <tr>
                     <td>Id:</td>
-                    <td><input readonly="true" type="text" id="txtPessoa" name="txtPessoa" disabled/></td>
+                    <td><input readonly="true" type="text" id="txtPessoa" name="txtPessoa"/></td>
                     <td>Logradouro:</td>
                     <td><input type="text" name="txtLogradouro"/></td>
                     <td>Nº:</td>
@@ -181,8 +176,7 @@ if (!empty($_POST)) {
                                 $valor['bairro'] .
                                 $valor['cidade'] .
                                 $valor['estado'] .
-                                $valor['cep'] 
-                                ."\");'></td>");
+                                $valor['cep'] ."\");'></td>");
                         echo("<td><INPUT TYPE='button' VALUE='Excluir'
                             onClick='excluir(" . $valor['idPessoa'] . ");'></td>");
                         echo ('</tr>');

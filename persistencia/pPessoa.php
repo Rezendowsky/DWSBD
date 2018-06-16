@@ -16,6 +16,7 @@ class pPessoa {
             $sql = "INSERT INTO";
             $sql .= " pessoa (idPessoa, nome, cpf, sexo, nascimento, telefone) ";
             $sql .= " VALUES('$this->idPessoa','$this->nome', '$this->cpf', '$this->sexo', '$this->nascimento', '$this->telefone') ";
+            echo $sql;
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();
@@ -31,7 +32,7 @@ class pPessoa {
             $sql = "UPDATE pessoa";
             $sql .= " SET nome = '$this->nome', cpf = '$this->cpf', sexo = '$this->sexo', nascimento = '$this->nascimento', telefone = '$this->telefone'";
             $sql .= " WHERE idPessoa = '$this->idPessoa'";
-
+            echo $sql;
             $obj->set('sql', $sql);
             $obj->query();
 
