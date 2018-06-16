@@ -1,7 +1,7 @@
 <?php
 class pEndereco {
     private $idendereco;
-    private $lougradouro;
+    private $logradouro;
     private $numero;
     private $bairro;
     private $cidade;
@@ -11,20 +11,13 @@ class pEndereco {
 
     function incluir() {
         try {
-            $obj = new Conexao();
-
+            $obj = new Conexao();                
             $sql = "INSERT INTO";
-            $sql .= " endereco (logradouro, numero, bairro, cidade, estado, cep, fkPessoa)";
-            $sql .= " VALUES('$this->lougradouro',"
-                    . "'$this->numero',"
-                    . "'$this->bairro',"
-                    . "'$this->cidade',"
-                    . "'$this->estado',"
-                    . "'$this->cep',"
-                    . "'$this->fkPessoa')";
-
+            $sql .= " endereco(logradouro, numero, bairro, cidade, estado, cep, fkPessoa)";
+            $sql .= " VALUES('$this->logradouro', '$this->numero','$this->bairro','$this->cidade','$this->estado','$this->cep',(SELECT MAX(idPessoa) FROM pessoa))";
+            echo($sql);
             $obj->set('sql', $sql);
-            $obj->query();
+            $obj->query();                        
             $obj->fechaconexao();
         } catch (Exception $e) {
             echo($e->getMessage());
@@ -36,7 +29,7 @@ class pEndereco {
             $obj = new Conexao();
             
             $sql = "UPDATE endereco";
-            $sql .= " SET lougradouro= '$this->lougradouro', "
+            $sql .= " SET logradouro= '$this->logradouro', "
                     . "numero= '$this->numero', "
                     . "bairro= '$this->bairro', "
                     . "cidade= '$this->cidade', "
