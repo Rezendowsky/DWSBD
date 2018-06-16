@@ -7,6 +7,9 @@ ini_set("display_errors", 1);
 include '../negocio/pessoa.php';
 include '../persistencia/Conexao.php';
 include '../persistencia/pPessoa.php';
+include '../negocio/Endereco.php';
+include '../persistencia/pEndereco.php';
+
 
 $erro = "Ihhh... Parece que essa página esta com erro aguarde enquanto nosso desenvolvedores resolvem este problema! ;)";
 
@@ -19,13 +22,26 @@ if (!empty($_POST)) {
     $objeto->set('sexo', $_POST['rdbSexo']);
     $objeto->set('nascimento', $_POST['txtNascimento']);
     $objeto->set('telefone', $_POST['txtTelefone']);
+    
+    $objetoEndereco = new Endereco();
+    $objetoEndereco->set('idEndereco', $_POST['txtEndereco']);
+    $objetoEndereco->set('logradouro', $_POST['txtLogradouro']);
+    $objetoEndereco->set('numero', $_POST['txtNumero']);
+    $objetoEndereco->set('bairro', $_POST['txrBairro']);
+    $objetoEndereco->set('cidade', $_POST['txtCidade']);
+    $objetoEndereco->set('estado', $_POST['txtEstado']);
+    $objetoEndereco->set('cep', $_POST['txtCEP']);
+    $objetoEndereco->set('fkPessoa', $_POST['txtPessoa']);
 
     if ($_POST['txtValor'] == 'gravar') {
         $objeto->incluir();
+        $objetoEndereco->incluir();
     } else if ($_POST['txtValor'] == 'editar') {
         $objeto->alterar();
+        $objetoEndereco->alterar();
     } else if ($_POST['txtValor'] == 'excluir') {
         $objeto->excluir();
+        $objetoEndereco->excluir();
     }
 }
 ?>
@@ -33,13 +49,20 @@ if (!empty($_POST)) {
     <head>        
         <link href="style.css" rel="stylesheet" type="text/css"/>
         <script type="text/javascript">
-            function editar(cod, nome, cpf, sexo, nascimento, telefone) {
+            function editar(cod, nome, cpf, nascimento, telefone, sexo
+                    logradouro, numero, bairro, cidade, estado, cep) {
                 document.frmCad.txtPessoa.value = cod;
                 document.frmCad.txtNome.value = nome;
                 document.frmCad.txtCpf.value = cpf;
-                document.frmCad.txtSexo.value = sexo;
                 document.frmCad.txtNascimento.value = nascimento;
                 document.frmCad.txtTelefone.value = telefone;
+                document.frmCad.txtSexo.value = sexo;
+                document.frmCad.txtLogradouro.value = logradouro;
+                document.frmCad.txtNumero.value = numero;
+                document.frmCad.txtBairro.value = bairro;
+                document.frmCad.txtCidade.value = cidade;
+                document.frmCad.txtEstado.value = estado;
+                document.frmCad.txtCEP.value = cep;
                 document.frmCad.txtValor.value = "editar";
             }
             function excluir(cod) {
@@ -68,7 +91,7 @@ if (!empty($_POST)) {
                 </tr>
                 <tr>
                     <td>Id:</td>
-                    <td><input readonly="true" type="text" id="txtPessoa" name="txtPessoa"/></td>
+                    <td><input readonly="true" type="text" id="txtPessoa" name="txtPessoa" disabled/></td>
                     <td>Logradouro:</td>
                     <td><input type="text" name="txtLogradouro"/></td>
                     <td>Nº:</td>
@@ -115,6 +138,7 @@ if (!empty($_POST)) {
                     <td>#</td>
                     <td>ID Pessoa</td>
                     <td>Nome</td>
+                    <td>CPF</td>
                     <td>Nascimento</td>
                     <td>Telefone</td>
                     <td>Sexo</td>
@@ -124,6 +148,8 @@ if (!empty($_POST)) {
                     <td>Cidade</td>
                     <td>Estado</td>
                     <td>CEP</td>
+                    <td>Editar</td>
+                    <td>Excluir</td>                        
                 </tr>
                 <?php
                 $count = 0;
@@ -136,13 +162,29 @@ if (!empty($_POST)) {
                         echo("<td>" . $valor['idPessoa'] . "</td>");
                         echo("<td>" . $valor['nome'] . "</td>");
                         echo("<td>" . $valor['cpf'] . "</td>");
-                        echo("<td>" . $valor['sexo'] . "</td>");
                         echo("<td>" . $valor['nascimento'] . "</td>");
                         echo("<td>" . $valor['telefone'] . "</td>");
+                        echo("<td>" . $valor['sexo'] . "</td>");
+                        echo("<td>" . $valor['logradouro'] . "</td>");
+                        echo("<td>" . $valor['numero'] . "</td>");
+                        echo("<td>" . $valor['bairro'] . "</td>");
+                        echo("<td>" . $valor['cidade'] . "</td>");
+                        echo("<td>" . $valor['estado'] . "</td>");
+                        echo("<td>" . $valor['cep'] . "</td>");
                         echo("<td><INPUT TYPE='button' VALUE='Editar'
-                            onClick='editar(" . $valor['idPessoa'] . ",\"" . $valor['nome'] . $valor[''] ."\");'></td>");
+                            onClick='editar(" . $valor['idPessoa'] . ",\"" . $valor['nome'] . $valor['cpf'] .
+                                $valor['nascimento'] .
+                                $valor['telefone'] .
+                                $valor['sexo'] .
+                                $valor['logradouro'] .
+                                $valor['numero'] .
+                                $valor['bairro'] .
+                                $valor['cidade'] .
+                                $valor['estado'] .
+                                $valor['cep'] 
+                                ."\");'></td>");
                         echo("<td><INPUT TYPE='button' VALUE='Excluir'
-                            onClick='excluir(" . $valor['idAluno'] . ");'></td>");
+                            onClick='excluir(" . $valor['idPessoa'] . ");'></td>");
                         echo ('</tr>');
                     }
                 } else {

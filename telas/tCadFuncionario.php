@@ -143,8 +143,8 @@ if (!empty($_POST)) {
                         echo("<td>" . $valor['idPessoa'] . "</td>");
                         echo("<td>" . $valor['nome'] . "</td>");
                         echo("<td>" . $valor['cpf'] . "</td>");
-                        echo("<td>" . $valor['sexo'] . "</td>");
                         echo("<td>" . $valor['nascimento'] . "</td>");
+                        echo("<td>" . $valor['sexo'] . "</td>");
                         echo("<td>" . $valor['telefone'] . "</td>");
                         echo("<td><INPUT TYPE='button' VALUE='Editar'
                             onClick='editar(" . $valor['idPessoa'] . ",\"" . $valor['nome'] . $valor[''] ."\");'></td>");

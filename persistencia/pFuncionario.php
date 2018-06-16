@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Persistencia da classe Funcionario
- *
- * @author Giovani Paganini <giovanipaganini@outlook.com>
- * @author Lucas Rezende <rezende099@icloud.com>
- */
 class pFuncionario extends pPessoa{
     private $idFuncionario;
     private $cargo;

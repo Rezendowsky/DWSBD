@@ -1,9 +1,3 @@
-/**
- * Persistencia da classe Funcionario
- *
- * @author Giovani Paganini <giovanipaganini@outlook.com>
- * @author Eduardo Augusto <eduardo.agms@icloud.com>
- */
 <?php
 class pEndereco {
     private $idendereco;
@@ -13,14 +7,21 @@ class pEndereco {
     private $cidade;
     private $estado;
     private $cep;
+    private $fkPessoa;
 
     function incluir() {
         try {
             $obj = new Conexao();
 
             $sql = "INSERT INTO";
-            $sql .= " endereco (logradouro, numero, bairro, cidade, estado, cep)";
-            $sql .= " VALUES('$this->lougradouro','$this->numero','$this->bairro','$this->cidade','$this->estado','$this->cep')";
+            $sql .= " endereco (logradouro, numero, bairro, cidade, estado, cep, fkPessoa)";
+            $sql .= " VALUES('$this->lougradouro',"
+                    . "'$this->numero',"
+                    . "'$this->bairro',"
+                    . "'$this->cidade',"
+                    . "'$this->estado',"
+                    . "'$this->cep',"
+                    . "'$this->fkPessoa')";
 
             $obj->set('sql', $sql);
             $obj->query();
@@ -35,7 +36,13 @@ class pEndereco {
             $obj = new Conexao();
             
             $sql = "UPDATE endereco";
-            $sql .= " SET lougradouro= '$this->lougradouro', numero= '$this->numero', bairro= '$this->bairro', cidade= '$this->cidade', estado= '$this->estado', cep= '$this->cep'";
+            $sql .= " SET lougradouro= '$this->lougradouro', "
+                    . "numero= '$this->numero', "
+                    . "bairro= '$this->bairro', "
+                    . "cidade= '$this->cidade', "
+                    . "estado= '$this->estado', "
+                    . "cep= '$this->cep', "
+                    . "fkPessoa= '$this->fkPessoa'";
             $sql .= " WHERE idendereco = '$this->idendereco'";
 
             $obj->set('sql', $sql);

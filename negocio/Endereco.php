@@ -1,9 +1,3 @@
-/**
- * Negocio da classe Endere�o
- *
- * @author Eduardo Augusto <eduardo.agms@icloud.com>
- * @author Lucas Rezende <rezende099@icloud.com>
- */
 <?php
 
 class Endereco {
@@ -15,6 +9,7 @@ class Endereco {
     private $cidade;
     private $estado;
     private $cep;
+    private $fkPessoa;
 
     public function set($prop, $value) {
         $this->$prop = $value;
@@ -32,6 +27,7 @@ class Endereco {
         $objeto->set('cidade', $this->cidade);
         $objeto->set('estado', $this->estado);
         $objeto->set('cep', $this->cep);
+        $objeto->set('fkPessoa', $this->fkPessoa);
         $objeto->incluir();
     }
 
@@ -43,6 +39,7 @@ class Endereco {
         $objeto->set('cidade', $this->cidade);
         $objeto->set('estado', $this->estado);
         $objeto->set('cep', $this->cep);
+        $objeto->set('fkPessoa', $this->fkPessoa);
         $objeto->alterar();
     }
 
@@ -60,6 +57,7 @@ class Endereco {
         $objeto->set('cidade', $this->cidade);
         $objeto->set('estado', $this->estado);
         $objeto->set('cep', $this->cep);
+        $objeto->set('fkPessoa', $this->fkPessoa);
         return $objeto->consultar();
     }
 
