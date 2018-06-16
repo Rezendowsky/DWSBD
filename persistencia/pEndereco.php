@@ -14,7 +14,7 @@ class pEndereco {
             $obj = new Conexao();                
             $sql = "INSERT INTO";
             $sql .= " endereco(logradouro, numero, bairro, cidade, estado, cep, fkPessoa)";
-            $sql .= " VALUES('$this->logradouro', '$this->numero','$this->bairro','$this->cidade','$this->estado','$this->cep',(SELECT MAX(idPessoa) FROM pessoa))";
+            $sql .= " VALUES('$this->logradouro','$this->numero','$this->bairro','$this->cidade','$this->estado','$this->cep',(SELECT MAX(idPessoa) FROM pessoa))";            
             echo($sql);
             $obj->set('sql', $sql);
             $obj->query();                        
@@ -37,7 +37,7 @@ class pEndereco {
                     . "cep= '$this->cep', "
                     . "fkPessoa= '$this->fkPessoa'";
             $sql .= " WHERE idendereco = '$this->idendereco'";
-
+            echo($sql);
             $obj->set('sql', $sql);
             $obj->query();
 
@@ -50,14 +50,11 @@ class pEndereco {
     function excluir() {
         try {
             $obj = new Conexao();
-
             $sql = "DELETE FROM endereco";
             $sql .= " WHERE idendereco = '$this->idendereco'";
-
+            echo($sql);
             $obj->set('sql', $sql);
-
             $obj->query();
-
             $obj->fechaconexao();
         } catch (Exception $e) {
             echo($e->getMessage());
@@ -70,7 +67,8 @@ class pEndereco {
             
             $endereco = array();
             $sql = "SELECT * ";
-            $sql .= " FROM endereco ";
+            $sql .= " FROM endereco";
+            echo($sql);
             $obj->set('sql', $sql);
             $result = $obj->query();
             $i = 0;
