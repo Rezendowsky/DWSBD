@@ -6,3 +6,5 @@ nbproject/private/private\.xml
 nbproject/private/config\.properties
 
 nbproject/private/private\.properties
+
+*.json
