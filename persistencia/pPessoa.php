@@ -16,7 +16,7 @@ class pPessoa {
             $sql = "INSERT INTO";
             $sql .= " pessoa (idPessoa, nome, cpf, sexo, nascimento, telefone) ";
             $sql .= " VALUES('$this->idPessoa','$this->nome', '$this->cpf', '$this->sexo', '$this->nascimento', '$this->telefone') ";
-            echo $sql;
+            echo($sql);
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();
@@ -32,7 +32,7 @@ class pPessoa {
             $sql = "UPDATE pessoa";
             $sql .= " SET nome = '$this->nome', cpf = '$this->cpf', sexo = '$this->sexo', nascimento = '$this->nascimento', telefone = '$this->telefone'";
             $sql .= " WHERE idPessoa = '$this->idPessoa'";
-            echo $sql;
+            echo($sql);
             $obj->set('sql', $sql);
             $obj->query();
 
@@ -45,14 +45,11 @@ class pPessoa {
     function excluir() {
         try {
             $obj = new Conexao();
-
             $sql = "DELETE FROM pessoa";
             $sql .= " WHERE idPessoa = '$this->idPessoa'";
-
+            echo($sql);
             $obj->set('sql', $sql);
-
             $obj->query();
-
             $obj->fechaconexao();
         } catch (Exception $e) {
             echo($e->getMessage());
@@ -67,6 +64,7 @@ class pPessoa {
             $sql = "SELECT * ";
             $sql .= " FROM pessoa p INNER JOIN endereco e ON";
             $sql .= " p.idPessoa = e.fkPessoa ";
+            echo($sql);
             $obj->set('sql', $sql);
             $result = $obj->query();
             $i = 0;
