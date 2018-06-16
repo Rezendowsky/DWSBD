@@ -36,7 +36,7 @@ if (!empty($_POST)) {
         $objetoEndereco->incluir();
     } else if ($_POST['txtValor'] == 'editar') {
         $objeto->alterar();
-        $objetoEndereco->alterar();
+        // $objetoEndereco->alterar();
     } else if ($_POST['txtValor'] == 'excluir') {        
         $objeto->excluir();
     }
@@ -46,22 +46,32 @@ if (!empty($_POST)) {
     <head>        
         <link href="style.css" rel="stylesheet" type="text/css"/>
         <script type="text/javascript">
-            function editar(cod, nome, cpf, nascimento, telefone, sexo,
-                logradouro, numero, bairro, cidade, estado, cep) {
-                    document.frmCad.txtPessoa.value = cod;
-                    document.frmCad.txtNome.value = nome;
-                    document.frmCad.txtCpf.value = cpf;
-                    document.frmCad.txtNascimento.value = nascimento;
-                    document.frmCad.txtTelefone.value = telefone;
-                    document.frmCad.txtSexo.value = sexo;
-                    document.frmCad.txtLogradouro.value = logradouro;
-                    document.frmCad.txtNumero.value = numero;
-                    document.frmCad.txtBairro.value = bairro;
-                    document.frmCad.txtCidade.value = cidade;
-                    document.frmCad.txtEstado.value = estado;
-                    document.frmCad.txtCEP.value = cep;                
-                    document.frmCad.txtValor.value = "editar";
+            function editar(cod, nome, cpf, nascimento, telefone, sexo) {
+                document.frmCad.txtPessoa.value = cod;
+                document.frmCad.txtNome.value = nome;
+                document.frmCad.txtCpf.value = cpf;
+                document.frmCad.txtNascimento.value = nascimento;
+                document.frmCad.txtTelefone.value = telefone;
+                document.frmCad.txtSexo.value = sexo;
             }
+
+
+            // function editar(cod, nome, cpf, nascimento, telefone, sexo,
+            //     logradouro, numero, bairro, cidade, estado, cep) {
+            //         document.frmCad.txtPessoa.value = cod;
+            //         document.frmCad.txtNome.value = nome;
+            //         document.frmCad.txtCpf.value = cpf;
+            //         document.frmCad.txtNascimento.value = nascimento;
+            //         document.frmCad.txtTelefone.value = telefone;
+            //         document.frmCad.txtSexo.value = sexo;
+            //         document.frmCad.txtLogradouro.value = logradouro;
+            //         document.frmCad.txtNumero.value = numero;
+            //         document.frmCad.txtBairro.value = bairro;
+            //         document.frmCad.txtCidade.value = cidade;
+            //         document.frmCad.txtEstado.value = estado;
+            //         document.frmCad.txtCEP.value = cep;                
+            //         document.frmCad.txtValor.value = "editar";
+            // }
             function excluir(cod) {
                 document.frmCad.txtPessoa.value = cod;
                 document.frmCad.txtValor.value = "excluir";
@@ -141,8 +151,8 @@ if (!empty($_POST)) {
                     <td>Cidade</td>
                     <td>Estado</td>
                     <td>CEP</td>
-                    <td>Editar</td>
-                    <td>Excluir</td>                        
+                    <td>&emsp;</td>
+                    <td>&emsp;</td>                        
                 </tr>
                 <?php
                 $count = 0;
@@ -165,15 +175,17 @@ if (!empty($_POST)) {
                         echo("<td>" . $valor['estado'] . "</td>");
                         echo("<td>" . $valor['cep'] . "</td>");
                         echo("<td><INPUT TYPE='button' VALUE='Editar'
-                            onClick='editar(" . $valor['idPessoa'] . ",\"" . $valor['nome'] . $valor['cpf'] .
-                                $valor['nascimento'] .
-                                $valor['telefone'] .
-                                $valor['sexo'] .
-                                $valor['logradouro'] .
-                                $valor['numero'] .
-                                $valor['bairro'] .
-                                $valor['cidade'] .
-                                $valor['estado'] .
+                            onClick='editar(". $valor['idPessoa'] . ",\"" .
+                                $valor['nome'] . "\",\"" .
+                                $valor['cpf'] . "\",\"" .
+                                $valor['nascimento'] . "\",\"" .
+                                $valor['telefone'] . "\",\"" .
+                                $valor['sexo'] . "\",\"" .
+                                $valor['logradouro'] . "\",\"" .
+                                $valor['numero'] . "\",\"" .
+                                $valor['bairro'] . "\",\"" .
+                                $valor['cidade'] . "\",\"" .
+                                $valor['estado'] . "\",\"" .
                                 $valor['cep'] ."\");'></td>");
                         echo("<td><INPUT TYPE='button' VALUE='Excluir'
                             onClick='excluir(" . $valor['idPessoa'] . ");'></td>");
