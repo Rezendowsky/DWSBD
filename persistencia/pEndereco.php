@@ -1,6 +1,6 @@
 <?php
 class pEndereco {
-    private $idendereco;
+    private $idEndereco;
     private $logradouro;
     private $numero;
     private $bairro;
@@ -36,7 +36,7 @@ class pEndereco {
                     . "estado= '$this->estado', "
                     . "cep= '$this->cep', "
                     . "fkPessoa= '$this->fkPessoa'";
-            $sql .= " WHERE idendereco = '$this->idendereco'";
+            $sql .= " WHERE idEndereco = '$this->idEndereco'";
             echo($sql);
             $obj->set('sql', $sql);
             $obj->query();
@@ -51,7 +51,7 @@ class pEndereco {
         try {
             $obj = new Conexao();
             $sql = "DELETE FROM endereco";
-            $sql .= " WHERE idendereco = '$this->idendereco'";
+            $sql .= " WHERE idEndereco = '$this->idEndereco'";
             echo($sql);
             $obj->set('sql', $sql);
             $obj->query();
