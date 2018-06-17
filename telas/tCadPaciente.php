@@ -47,33 +47,33 @@ if (!empty($_POST)) {
     <head>        
         <link href="style.css" rel="stylesheet" type="text/css"/>
         <script type="text/javascript">
-            function editar(cod, nome, cpf, nascimento, telefone, sexo) {
-                document.frmCad.txtPessoa.value = cod;
-                document.frmCad.txtNome.value = nome;
-                document.frmCad.txtCpf.value = cpf;
-                document.frmCad.txtNascimento.value = nascimento;
-                document.frmCad.txtTelefone.value = telefone;
-                document.frmCad.txtSexo.value = sexo;
-                document.frmCad.txtValor.value = "editar";
-            }
-
-
-            // function editar(cod, nome, cpf, nascimento, telefone, sexo,
-            //     logradouro, numero, bairro, cidade, estado, cep) {
-            //         document.frmCad.txtPessoa.value = cod;
-            //         document.frmCad.txtNome.value = nome;
-            //         document.frmCad.txtCpf.value = cpf;
-            //         document.frmCad.txtNascimento.value = nascimento;
-            //         document.frmCad.txtTelefone.value = telefone;
-            //         document.frmCad.txtSexo.value = sexo;
-            //         document.frmCad.txtLogradouro.value = logradouro;
-            //         document.frmCad.txtNumero.value = numero;
-            //         document.frmCad.txtBairro.value = bairro;
-            //         document.frmCad.txtCidade.value = cidade;
-            //         document.frmCad.txtEstado.value = estado;
-            //         document.frmCad.txtCEP.value = cep;                
-            //         document.frmCad.txtValor.value = "editar";
+            // function editar(cod, nome, cpf, nascimento, telefone, sexo) {
+            //     document.frmCad.txtPessoa.value = cod;
+            //     document.frmCad.txtNome.value = nome;
+            //     document.frmCad.txtCpf.value = cpf;
+            //     document.frmCad.txtNascimento.value = nascimento;
+            //     document.frmCad.txtTelefone.value = telefone;
+            //     document.frmCad.rdbSexo.value = sexo;
+            //     document.frmCad.txtValor.value = "editar";
             // }
+
+
+            function editar(cod, nome, cpf, nascimento, telefone, sexo,
+                logradouro, numero, bairro, cidade, estado, cep) {
+                    document.frmCad.txtPessoa.value = cod;
+                    document.frmCad.txtNome.value = nome;
+                    document.frmCad.txtCpf.value = cpf;
+                    document.frmCad.txtNascimento.value = nascimento;
+                    document.frmCad.txtTelefone.value = telefone;
+                    document.frmCad.rdbSexo.value = sexo;
+                    document.frmCad.txtLogradouro.value = logradouro;
+                    document.frmCad.txtNumero.value = numero;
+                    document.frmCad.txtBairro.value = bairro;
+                    document.frmCad.txtCidade.value = cidade;
+                    document.frmCad.txtEstado.value = estado;
+                    document.frmCad.txtCEP.value = cep;                
+                    document.frmCad.txtValor.value = "editar";
+            }
             function excluir(cod) {
                 document.frmCad.txtPessoa.value = cod;
                 document.frmCad.txtValor.value = "excluir";
@@ -147,7 +147,6 @@ if (!empty($_POST)) {
                     <td>Nascimento</td>
                     <td>Telefone</td>
                     <td>Sexo</td>
-                    <td>idEndereco</td> 
                     <td>Logradouro</td>
                     <td>Nº</td>
                     <td>Bairro</td>
@@ -171,7 +170,6 @@ if (!empty($_POST)) {
                         echo("<td>" . $valor['nascimento'] . "</td>");
                         echo("<td>" . $valor['telefone'] . "</td>");
                         echo("<td>" . $valor['sexo'] . "</td>");
-                        echo("<td>" . $valor['idEndereco'] . "</td>");
                         echo("<td>" . $valor['logradouro'] . "</td>");
                         echo("<td>" . $valor['numero'] . "</td>");
                         echo("<td>" . $valor['bairro'] . "</td>");
@@ -185,7 +183,6 @@ if (!empty($_POST)) {
                                 $valor['nascimento'] . "\",\"" .
                                 $valor['telefone'] . "\",\"" .
                                 $valor['sexo'] . "\",\"" .
-                                $valor['idEndereco'] . "\",\"" .
                                 $valor['logradouro'] . "\",\"" .
                                 $valor['numero'] . "\",\"" .
                                 $valor['bairro'] . "\",\"" .
