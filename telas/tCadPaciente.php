@@ -139,7 +139,7 @@
                     <tr>
                         <td colspan="6">
                             <input class="btn btnGravar" type="submit" value="Gravar" name="btnGravar"/>
-                            <input class="btn btnLimpar" type="reset" value="Limpar" name="btnLimpar"/>
+                            <input class="btn btnEditar" type="reset" value="Limpar" name="btnLimpar"/>
                         </td>
                     </tr>
                 </table>
@@ -186,7 +186,7 @@
                                 echo("<td>" . $valor['cidade'] . "</td>");
                                 echo("<td>" . $valor['estado'] . "</td>");
                                 echo("<td>" . $valor['cep'] . "</td>");                        
-                                echo("<td><INPUT TYPE='button' VALUE='Editar'
+                                echo("<td><INPUT class='btn btnEditar' TYPE='button' VALUE='Editar'
                                     onClick='editar(". $valor['idPessoa'] . ",\"" .
                                         $valor['nome'] . "\",\"" .
                                         $valor['cpf'] . "\",\"" .
@@ -201,7 +201,7 @@
                                         $valor['cidade'] . "\",\"" .
                                         $valor['estado'] . "\",\"" .
                                         $valor['cep'] ."\");'></td>");
-                                echo("<td><INPUT TYPE='button' VALUE='Excluir'
+                                echo("<td><INPUT class='btn btnExcluir' TYPE='button' VALUE='Excluir'
                                     onClick='excluir(" . $valor['idPessoa'] . ");'></td>");
                                 echo ('</tr>');
                             }
