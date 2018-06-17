@@ -31,6 +31,7 @@ if (!empty($_POST)) {
     $objetoEndereco->set('cidade', $_POST['txtCidade']);
     $objetoEndereco->set('estado', $_POST['txtEstado']);
     $objetoEndereco->set('cep', $_POST['txtCEP']);    
+    $objetoEndereco->set('fkPessoa', $_POST['fkPessoa']);
 
     if ($_POST['txtValor'] == 'gravar') {
         $objeto->incluir();
@@ -59,19 +60,21 @@ if (!empty($_POST)) {
 
 
             function editar(cod, nome, cpf, nascimento, telefone, sexo,
-                logradouro, numero, bairro, cidade, estado, cep) {
+                endereco, fkPessoa, logradouro, numero, bairro, cidade, estado, cep) {
                     document.frmCad.txtPessoa.value = cod;
                     document.frmCad.txtNome.value = nome;
                     document.frmCad.txtCpf.value = cpf;
                     document.frmCad.txtNascimento.value = nascimento;
                     document.frmCad.txtTelefone.value = telefone;
                     document.frmCad.rdbSexo.value = sexo;
+                    document.frmCad.txtEndereco.value = endereco;
+                    document.frmCad.fkPessoa.value = fkPessoa;
                     document.frmCad.txtLogradouro.value = logradouro;
                     document.frmCad.txtNumero.value = numero;
                     document.frmCad.txtBairro.value = bairro;
                     document.frmCad.txtCidade.value = cidade;
                     document.frmCad.txtEstado.value = estado;
-                    document.frmCad.txtCEP.value = cep;                
+                    document.frmCad.txtCEP.value = cep;                    
                     document.frmCad.txtValor.value = "editar";
             }
             function excluir(cod) {
@@ -97,6 +100,7 @@ if (!empty($_POST)) {
                 <tr>
                     <td>Id:</td>
                     <td><input readonly="true" type="text" id="txtPessoa" name="txtPessoa" /></td>
+                    <td class="hidden"><input readonly="true" type="text" id="txtEndereco" name="txtEndereco"/></td>
                     <td>Logradouro:</td>
                     <td><input type="text" name="txtLogradouro" required/></td>
                     <td>Nº:</td>
@@ -125,6 +129,7 @@ if (!empty($_POST)) {
                     <td><input type="text" name="txtTelefone" required/></td>
                     <td>CEP:</td>
                     <td><input type="text" name="txtCEP" required/></td>
+                    <td class="hidden"><input readonly="true" type="text" name="fkPessoa"/></td>
                 </tr>
                 <tr>
                     <td>Sexo:</td>
@@ -147,12 +152,14 @@ if (!empty($_POST)) {
                     <td>Nascimento</td>
                     <td>Telefone</td>
                     <td>Sexo</td>
+                    <td class="hidden">idEndereco</td>
+                    <td class="hidden">fkPessoa</td>
                     <td>Logradouro</td>
                     <td>Nº</td>
                     <td>Bairro</td>
                     <td>Cidade</td>
                     <td>Estado</td>
-                    <td>CEP</td>
+                    <td>CEP</td>                    
                     <td>&emsp;</td>
                     <td>&emsp;</td>                        
                 </tr>
@@ -170,12 +177,14 @@ if (!empty($_POST)) {
                         echo("<td>" . $valor['nascimento'] . "</td>");
                         echo("<td>" . $valor['telefone'] . "</td>");
                         echo("<td>" . $valor['sexo'] . "</td>");
+                        echo("<td class=\"hidden\">" . $valor['idEndereco'] . "</td>");
+                        echo("<td class=\"hidden\">" . $valor['fkPessoa'] . "</td>");
                         echo("<td>" . $valor['logradouro'] . "</td>");
                         echo("<td>" . $valor['numero'] . "</td>");
                         echo("<td>" . $valor['bairro'] . "</td>");
                         echo("<td>" . $valor['cidade'] . "</td>");
                         echo("<td>" . $valor['estado'] . "</td>");
-                        echo("<td>" . $valor['cep'] . "</td>");
+                        echo("<td>" . $valor['cep'] . "</td>");                        
                         echo("<td><INPUT TYPE='button' VALUE='Editar'
                             onClick='editar(". $valor['idPessoa'] . ",\"" .
                                 $valor['nome'] . "\",\"" .
@@ -183,6 +192,8 @@ if (!empty($_POST)) {
                                 $valor['nascimento'] . "\",\"" .
                                 $valor['telefone'] . "\",\"" .
                                 $valor['sexo'] . "\",\"" .
+                                $valor['idEndereco'] . "\",\"" .
+                                $valor['fkPessoa'] . "\",\"" .
                                 $valor['logradouro'] . "\",\"" .
                                 $valor['numero'] . "\",\"" .
                                 $valor['bairro'] . "\",\"" .

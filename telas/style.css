@@ -63,7 +63,7 @@ table {
 .tableHeader{
     background-color: lightgreen;
     color: darkgreen;    
-    border: 1px solid #darkgreen;    
+    border: 1px solid darkgreen;    
     text-align: left;
     padding: 2px;
 }
@@ -131,4 +131,8 @@ input {
     background-color: orange;
     color: white;
     border-color: darkorange;
+}
+
+.hidden {
+    display: none !important;
 }
