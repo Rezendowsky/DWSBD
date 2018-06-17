@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jun 10, 2018 at 12:43 AM
--- Server version: 10.1.32-MariaDB
--- PHP Version: 7.2.5
+-- Host: 127.0.0.1
+-- Generation Time: 17-Jun-2018 às 20:20
+-- Versão do servidor: 10.1.31-MariaDB
+-- PHP Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `DSWBD_2018`
+-- Database: `dswbd_2018`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `consulta`
+-- Estrutura da tabela `consulta`
 --
 
 CREATE TABLE `consulta` (
@@ -38,7 +38,7 @@ CREATE TABLE `consulta` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cronograma`
+-- Estrutura da tabela `cronograma`
 --
 
 CREATE TABLE `cronograma` (
@@ -51,7 +51,7 @@ CREATE TABLE `cronograma` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `endereco`
+-- Estrutura da tabela `endereco`
 --
 
 CREATE TABLE `endereco` (
@@ -65,10 +65,17 @@ CREATE TABLE `endereco` (
   `fkPessoa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `endereco`
+--
+
+INSERT INTO `endereco` (`idEndereco`, `logradouro`, `numero`, `bairro`, `cidade`, `estado`, `cep`, `fkPessoa`) VALUES
+(3, 'av genoveva rezende carneiro', '70', 'vila bela', 'morrinhos', 'go', '75650000', 3);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `funcionario`
+-- Estrutura da tabela `funcionario`
 --
 
 CREATE TABLE `funcionario` (
@@ -82,7 +89,7 @@ CREATE TABLE `funcionario` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `paciente`
+-- Estrutura da tabela `paciente`
 --
 
 CREATE TABLE `paciente` (
@@ -96,7 +103,7 @@ CREATE TABLE `paciente` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pessoa`
+-- Estrutura da tabela `pessoa`
 --
 
 CREATE TABLE `pessoa` (
@@ -107,6 +114,26 @@ CREATE TABLE `pessoa` (
   `nascimento` date NOT NULL,
   `telefone` char(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `pessoa`
+--
+
+INSERT INTO `pessoa` (`idPessoa`, `nome`, `cpf`, `sexo`, `nascimento`, `telefone`) VALUES
+(3, 'Giovani', '09154321964', 'M', '1995-05-16', '981036694'),
+(4, 'Giovani', '65373342769', 'M', '1995-05-16', '981036694'),
+(5, 'Giovani', '93494465703', 'M', '1995-05-16', '981036694'),
+(6, 'Giovani', '34522224206', 'M', '1995-05-16', '981036694'),
+(7, 'Giovani', '42210053510', 'M', '1995-05-16', '981036694'),
+(8, 'teste', '1235677', 'M', '0000-00-00', 'teste'),
+(9, 'teste', '12345678', 'M', '0000-00-00', 'teste'),
+(10, 'Giovani', '31909214230', 'M', '1995-05-16', '981036694'),
+(13, 'giovani', '78419543012', 'M', '1995-05-16', '12345678'),
+(14, 'giovani', '44788031884', 'M', '1995-05-16', '12345678'),
+(15, 'giovani', '31420649825', 'M', '1995-05-16', '12345678'),
+(17, 'giovani', '12025784201', 'M', '1995-05-16', '12345678'),
+(18, 'giovani', '71642584657', 'M', '1995-05-16', '12345678'),
+(19, 'giovani', '81662343787', 'M', '1995-05-16', '12345678');
 
 --
 -- Indexes for dumped tables
@@ -172,7 +199,7 @@ ALTER TABLE `cronograma`
 -- AUTO_INCREMENT for table `endereco`
 --
 ALTER TABLE `endereco`
-  MODIFY `idEndereco` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idEndereco` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `funcionario`
@@ -190,26 +217,26 @@ ALTER TABLE `paciente`
 -- AUTO_INCREMENT for table `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `endereco`
+-- Limitadores para a tabela `endereco`
 --
 ALTER TABLE `endereco`
-  ADD CONSTRAINT `fkPessoaEndereco` FOREIGN KEY (`fkPessoa`) REFERENCES `pessoa` (`idPessoa`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fkPessoaEndereco` FOREIGN KEY (`fkPessoa`) REFERENCES `pessoa` (`idPessoa`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `funcionario`
+-- Limitadores para a tabela `funcionario`
 --
 ALTER TABLE `funcionario`
   ADD CONSTRAINT `fkPessoaFuncionario` FOREIGN KEY (`fkPessoa`) REFERENCES `pessoa` (`idPessoa`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `paciente`
+-- Limitadores para a tabela `paciente`
 --
 ALTER TABLE `paciente`
   ADD CONSTRAINT `fkPessoaPaciente` FOREIGN KEY (`fkPessoa`) REFERENCES `pessoa` (`idPessoa`) ON UPDATE CASCADE;
