@@ -23,7 +23,8 @@ if (!empty($_POST)) {
     $objeto->set('nascimento', $_POST['txtNascimento']);
     $objeto->set('telefone', $_POST['txtTelefone']);
     
-    $objetoEndereco = new Endereco();    
+    $objetoEndereco = new Endereco();
+    $objetoEndereco->set('idEndereco', $_POST['txtEndereco']);   
     $objetoEndereco->set('logradouro', $_POST['txtLogradouro']);
     $objetoEndereco->set('numero', $_POST['txtNumero']);
     $objetoEndereco->set('bairro', $_POST['txtBairro']);
@@ -36,7 +37,7 @@ if (!empty($_POST)) {
         $objetoEndereco->incluir();
     } else if ($_POST['txtValor'] == 'editar') {
         $objeto->alterar();
-        // $objetoEndereco->alterar();
+        $objetoEndereco->alterar();
     } else if ($_POST['txtValor'] == 'excluir') {        
         $objeto->excluir();
     }
@@ -53,6 +54,7 @@ if (!empty($_POST)) {
                 document.frmCad.txtNascimento.value = nascimento;
                 document.frmCad.txtTelefone.value = telefone;
                 document.frmCad.txtSexo.value = sexo;
+                document.frmCad.txtValor.value = "editar";
             }
 
 
@@ -87,7 +89,7 @@ if (!empty($_POST)) {
             <!--Variável escondida 'hidden' para manipulação do estado do formulário
             Vide: Diagrama de Estado na UML
             -->
-            <input type="hidden" name="txtValor" value="gravar">
+            <input name="txtValor" value="gravar">
             <table class="tableForm">                
                 <tr class="tableHeader">
                     <th class="tdHeader" colspan="6">Registro de Paciente</th>
@@ -139,12 +141,13 @@ if (!empty($_POST)) {
             <table class="tableResult" cellspacing="1" cellpadding="1">
                 <tr>
                     <td>#</td>
-                    <td>ID Pessoa</td>
+                    <td>ID Pessoa</td>                    
                     <td>Nome</td>
                     <td>CPF</td>
                     <td>Nascimento</td>
                     <td>Telefone</td>
                     <td>Sexo</td>
+                    <td>idEndereco</td> 
                     <td>Logradouro</td>
                     <td>Nº</td>
                     <td>Bairro</td>
@@ -168,6 +171,7 @@ if (!empty($_POST)) {
                         echo("<td>" . $valor['nascimento'] . "</td>");
                         echo("<td>" . $valor['telefone'] . "</td>");
                         echo("<td>" . $valor['sexo'] . "</td>");
+                        echo("<td>" . $valor['idEndereco'] . "</td>");
                         echo("<td>" . $valor['logradouro'] . "</td>");
                         echo("<td>" . $valor['numero'] . "</td>");
                         echo("<td>" . $valor['bairro'] . "</td>");
@@ -181,6 +185,7 @@ if (!empty($_POST)) {
                                 $valor['nascimento'] . "\",\"" .
                                 $valor['telefone'] . "\",\"" .
                                 $valor['sexo'] . "\",\"" .
+                                $valor['idEndereco'] . "\",\"" .
                                 $valor['logradouro'] . "\",\"" .
                                 $valor['numero'] . "\",\"" .
                                 $valor['bairro'] . "\",\"" .
