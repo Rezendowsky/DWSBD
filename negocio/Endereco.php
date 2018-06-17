@@ -21,6 +21,7 @@ class Endereco {
 
     public function incluir() {
         $objeto = new pEndereco;
+        $objeto->set('idEndereco', $this->idEndereco);
         $objeto->set('logradouro', $this->logradouro);
         $objeto->set('numero', $this->numero);
         $objeto->set('bairro', $this->bairro);
@@ -33,6 +34,7 @@ class Endereco {
 
     public function alterar() {
         $objeto = new pEndereco;
+        $objeto->set('idEndereco', $this->idEndereco);
         $objeto->set('logradouro', $this->logradouro);
         $objeto->set('numero', $this->numero);
         $objeto->set('bairro', $this->bairro);
@@ -51,6 +53,7 @@ class Endereco {
 
     public function consultar() {
         $objeto = new pEndereco;
+        $objeto->set('idEndereco', $this->idEndereco);
         $objeto->set('logradouro', $this->logradouro);
         $objeto->set('numero', $this->numero);
         $objeto->set('bairro', $this->bairro);
