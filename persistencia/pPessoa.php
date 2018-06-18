@@ -63,7 +63,7 @@ class pPessoa {
             $pessoa = array();
             $sql = "SELECT * ";
             $sql .= " FROM pessoa p INNER JOIN endereco e ON";
-            $sql .= " p.idPessoa = e.fkPessoa ";
+            $sql .= " p.idPessoa = e.fkPessoa INNER JOIN funcionario f on p.idPessoa = f.fkPessoa";
             echo($sql);
             $obj->set('sql', $sql);
             $result = $obj->query();
