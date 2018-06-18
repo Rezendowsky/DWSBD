@@ -120,7 +120,7 @@
                     </tr>
                     <tr>
                         <td>Nascimento:</td>
-                        <td><input type="text" name="txtNascimento" required/></td>
+                        <td><input type="date" name="txtNascimento" required/></td>
                         <td>Estado:</td>
                         <td><input type="text" name="txtEstado" required/></td>
                     </tr>
