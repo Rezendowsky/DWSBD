@@ -1,10 +1,11 @@
 <?php
 
-class pPaciente extends pPessoa{
+class pPaciente {
     private $idPaciente;
     private $peso;
     private $altura;
     private $tipoSanguineo; 
+    private $fkPessoa;
     
     function incluir() {
         try {
@@ -12,8 +13,7 @@ class pPaciente extends pPessoa{
 
             $sql = "INSERT INTO";
             $sql .= " paciente (peso, altura, tipoSanguineo) ";
-            $sql .= " VALUES('$this->peso', '$this->altura', '$this->tipoSanguineo') ";
-
+            $sql .= " VALUES('$this->peso', '$this->altura', '$this->tipoSanguineo',(SELECT MAX(idPessoa) FROM pessoa)) ";
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();
@@ -30,7 +30,6 @@ class pPaciente extends pPessoa{
             $sql = "UPDATE paciente";
             $sql .= " SET peso= '$this->peso', altura= '$this->altura', tipoSanguineo= '$this->altura'";
             $sql .= " WHERE idPaciente = '$this->idPaciente'";
-
             $obj->set('sql', $sql);
             $obj->query();
 
@@ -46,7 +45,6 @@ class pPaciente extends pPessoa{
 
             $sql = "DELETE FROM paciente";
             $sql .= " WHERE idPaciente = '$this->idPaciente'";
-
             $obj->set('sql', $sql);
 
             $obj->query();

@@ -32,12 +32,21 @@
         $objetoEndereco->set('cep', $_POST['txtCEP']);    
         $objetoEndereco->set('fkPessoa', $_POST['fkPessoa']);
 
+        $objetoPaciente = new Paciente();
+        $objetoPaciente->set('idPaciente', $_POST['txtPaciente']);
+        $objetoPaciente->set('peso', $_POST['txtPeso']);
+        $objetoPaciente->set('altura', $_POST['txtAltura']);
+        $objetoPaciente->set('tipoSanguineo', $_POST['txtTipoSanguineo']);
+        $objetoPaciente->set('fkPessoa', $_POST['fkPessoa']);
+
         if ($_POST['txtValor'] == 'gravar') {
             $objeto->incluir();
             $objetoEndereco->incluir();
+            $objetoPaciente->incluir();
         } else if ($_POST['txtValor'] == 'editar') {
             $objeto->alterar();
             $objetoEndereco->alterar();
+            $objetoPaciente->alterar();
         } else if ($_POST['txtValor'] == 'excluir') {        
             $objeto->excluir();
         }
@@ -62,6 +71,7 @@
 
 
         function editar(cod, nome, cpf, nascimento, telefone, sexo,
+        paciente, peso, altura, tipoSanguineo,
         endereco, fkPessoa, logradouro, numero, bairro, cidade, estado, cep) {
             document.frmCad.txtPessoa.value = cod;
             document.frmCad.txtNome.value = nome;
@@ -69,6 +79,10 @@
             document.frmCad.txtNascimento.value = nascimento;
             document.frmCad.txtTelefone.value = telefone;
             document.frmCad.rdbSexo.value = sexo;
+            document.frmCad.txtPaciente.value = paciente;
+            document.frmCad.txtPeso.value = peso;
+            document.frmCad.txtAltura.value = altura;
+            document.frmCad.txtTipoSanguineo.value = tipoSanguineo;
             document.frmCad.txtEndereco.value = endereco;
             document.frmCad.fkPessoa.value = fkPessoa;
             document.frmCad.txtLogradouro.value = logradouro;
@@ -93,6 +107,7 @@
             action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <!--Variável escondida 'hidden' para manipulação do estado do formulário Vide: Diagrama de Estado na UML-->
                 <input name="txtValor" value="gravar">
+                <input type="checkbox" value="esconder">
                 <table class="tableForm">                
                     <tr class="tableHeader">
                         <th class="tdHeader" colspan="6">Registro de Paciente</th>
@@ -120,7 +135,7 @@
                     </tr>
                     <tr>
                         <td>Nascimento:</td>
-                        <td><input type="text" name="txtNascimento" required/></td>
+                        <td><input type="date" name="txtNascimento" required/></td>
                         <td>Estado:</td>
                         <td><input type="text" name="txtEstado" required/></td>
                     </tr>
@@ -133,8 +148,24 @@
                     </tr>
                     <tr>
                         <td>Sexo:</td>
-                        <td><input type="radio" name="rdbSexo" value="Masculino" checked required/>M
-                        <input type="radio" name="rdbSexo" value="Feminino" required/>F</td>
+                        <td><input type="radio" name="rdbSexo" value="M" checked required/>Masculino
+                        <input type="radio" name="rdbSexo" value="F" required/>Feminino</td>                        
+                    </tr>
+                    <tr class="hidden">
+                        <td>Paciente</td>
+                        <td><input readonly="true" type="text" name="txtPaciente" required/></td>
+                    </tr>
+                    <tr>
+                        <td>Peso</td>
+                        <td><input type="text" name="txtPeso" required/></td>
+                    </tr>
+                    <tr>
+                        <td>Altura</td>
+                        <td><input type="text" name="txtAltura" required/></td>
+                    </tr>
+                    <tr>
+                        <td>Tipo Sanguineo</td>
+                        <td><input type="text" name="txtTipoSanguineo" required/></td>
                     </tr>
                     <tr>
                         <td colspan="6">
@@ -152,6 +183,10 @@
                         <td>Nascimento</td>
                         <td>Telefone</td>
                         <td>Sexo</td>
+                        <td>idPaciente</td>
+                        <td>Peso</td>
+                        <td>Altura</td>
+                        <td>TipoSanguineo</td>
                         <td class="hidden">idEndereco</td>
                         <td class="hidden">fkPessoa</td>
                         <td>Logradouro</td>
@@ -178,6 +213,10 @@
                                 echo("<td>" . $valor['nascimento'] . "</td>");
                                 echo("<td>" . $valor['telefone'] . "</td>");
                                 echo("<td>" . $valor['sexo'] . "</td>");
+                                echo("<td>" . $valor['idPaciente'] . "</td>");
+                                echo("<td>" . $valor['peso'] . "</td>");
+                                echo("<td>" . $valor['altura'] . "</td>");
+                                echo("<td>" . $valor['tipoSanguineo'] . "</td>");
                                 echo("<td class=\"hidden\">" . $valor['idEndereco'] . "</td>");
                                 echo("<td class=\"hidden\">" . $valor['fkPessoa'] . "</td>");
                                 echo("<td>" . $valor['logradouro'] . "</td>");
@@ -193,6 +232,10 @@
                                         $valor['nascimento'] . "\",\"" .
                                         $valor['telefone'] . "\",\"" .
                                         $valor['sexo'] . "\",\"" .
+                                        $valor['idPaciente'] . "\",\"" .
+                                        $valor['peso'] . "\",\"" .
+                                        $valor['altura'] . "\",\"" .
+                                        $valor['tipoSanguineo'] . "\",\"" .
                                         $valor['idEndereco'] . "\",\"" .
                                         $valor['fkPessoa'] . "\",\"" .
                                         $valor['logradouro'] . "\",\"" .
