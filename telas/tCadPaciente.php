@@ -8,6 +8,8 @@
     include '../persistencia/pPessoa.php';
     include '../negocio/Endereco.php';
     include '../persistencia/pEndereco.php';
+    include '../negocio/Paciente.php';
+    include '../persistencia/pPaciente.php';
 
 
     $erro = "Ihhh... Parece que essa página esta com erro aguarde enquanto nosso desenvolvedores resolvem este problema! ;)";
@@ -70,10 +72,11 @@
         // }
 
 
-        function editar(cod, nome, cpf, nascimento, telefone, sexo,
+        function editar(cod, fkPessoa, nome, cpf, nascimento, telefone, sexo,
         paciente, peso, altura, tipoSanguineo,
-        endereco, fkPessoa, logradouro, numero, bairro, cidade, estado, cep) {
+        endereco, logradouro, numero, bairro, cidade, estado, cep) {
             document.frmCad.txtPessoa.value = cod;
+            document.frmCad.fkPessoa.value = fkPessoa;
             document.frmCad.txtNome.value = nome;
             document.frmCad.txtCpf.value = cpf;
             document.frmCad.txtNascimento.value = nascimento;
@@ -83,8 +86,7 @@
             document.frmCad.txtPeso.value = peso;
             document.frmCad.txtAltura.value = altura;
             document.frmCad.txtTipoSanguineo.value = tipoSanguineo;
-            document.frmCad.txtEndereco.value = endereco;
-            document.frmCad.fkPessoa.value = fkPessoa;
+            document.frmCad.txtEndereco.value = endereco;            
             document.frmCad.txtLogradouro.value = logradouro;
             document.frmCad.txtNumero.value = numero;
             document.frmCad.txtBairro.value = bairro;
@@ -114,8 +116,9 @@
                     </tr>
                     <tr>
                         <td>Id:</td>
-                        <td><input readonly="true" type="text" id="txtPessoa" name="txtPessoa" /></td>
-                        <td class="hidden"><input readonly="true" type="text" id="txtEndereco" name="txtEndereco"/></td>
+                        <td><input readonly="true" type="text" id="txtPessoa" name="txtPessoa" /></td>                        
+                        <td class="hidden">fkPessoa<input readonly="true" type="text" name="fkPessoa"/></td>                        
+                        <td class="hidden">idEndereco<input readonly="true" type="text" id="txtEndereco" name="txtEndereco"/></td>
                         <td>Logradouro:</td>
                         <td><input type="text" name="txtLogradouro" required/></td>
                         <td>Nº:</td>
@@ -143,8 +146,7 @@
                         <td>Telefone:</td>
                         <td><input type="text" name="txtTelefone" required/></td>
                         <td>CEP:</td>
-                        <td><input type="text" name="txtCEP" required/></td>
-                        <td class="hidden"><input readonly="true" type="text" name="fkPessoa"/></td>
+                        <td><input type="text" name="txtCEP" required/></td>                        
                     </tr>
                     <tr>
                         <td>Sexo:</td>
@@ -177,18 +179,18 @@
                 <table class="tableResult" cellspacing="1" cellpadding="1">
                     <tr>
                         <td>#</td>
-                        <td>ID Pessoa</td>                    
+                        <td>ID Pessoa</td>
+                        <td class="hidden">fkPessoa</td>                    
                         <td>Nome</td>
                         <td>CPF</td>
                         <td>Nascimento</td>
                         <td>Telefone</td>
                         <td>Sexo</td>
-                        <td>idPaciente</td>
+                        <td class="hidden">idPaciente</td>
                         <td>Peso</td>
                         <td>Altura</td>
                         <td>TipoSanguineo</td>
-                        <td class="hidden">idEndereco</td>
-                        <td class="hidden">fkPessoa</td>
+                        <td class="hidden">idEndereco</td>                        
                         <td>Logradouro</td>
                         <td>Nº</td>
                         <td>Bairro</td>
@@ -208,17 +210,17 @@
                                 echo ('<tr>');
                                 echo("<td>" . $count . "</td>");
                                 echo("<td>" . $valor['idPessoa'] . "</td>");
+                                echo("<td class=\"hidden\">" . $valor['fkPessoa'] . "</td>");
                                 echo("<td>" . $valor['nome'] . "</td>");
                                 echo("<td>" . $valor['cpf'] . "</td>");
                                 echo("<td>" . $valor['nascimento'] . "</td>");
                                 echo("<td>" . $valor['telefone'] . "</td>");
                                 echo("<td>" . $valor['sexo'] . "</td>");
-                                echo("<td>" . $valor['idPaciente'] . "</td>");
+                                echo("<td class=\"hidden\">" . $valor['idPaciente'] . "</td>");
                                 echo("<td>" . $valor['peso'] . "</td>");
                                 echo("<td>" . $valor['altura'] . "</td>");
                                 echo("<td>" . $valor['tipoSanguineo'] . "</td>");
-                                echo("<td class=\"hidden\">" . $valor['idEndereco'] . "</td>");
-                                echo("<td class=\"hidden\">" . $valor['fkPessoa'] . "</td>");
+                                echo("<td class=\"hidden\">" . $valor['idEndereco'] . "</td>");                                
                                 echo("<td>" . $valor['logradouro'] . "</td>");
                                 echo("<td>" . $valor['numero'] . "</td>");
                                 echo("<td>" . $valor['bairro'] . "</td>");
@@ -227,6 +229,7 @@
                                 echo("<td>" . $valor['cep'] . "</td>");                        
                                 echo("<td><INPUT class='btn btnEditar' TYPE='button' VALUE='Editar'
                                     onClick='editar(". $valor['idPessoa'] . ",\"" .
+                                        $valor['fkPessoa'] . "\",\"" .
                                         $valor['nome'] . "\",\"" .
                                         $valor['cpf'] . "\",\"" .
                                         $valor['nascimento'] . "\",\"" .
@@ -236,8 +239,7 @@
                                         $valor['peso'] . "\",\"" .
                                         $valor['altura'] . "\",\"" .
                                         $valor['tipoSanguineo'] . "\",\"" .
-                                        $valor['idEndereco'] . "\",\"" .
-                                        $valor['fkPessoa'] . "\",\"" .
+                                        $valor['idEndereco'] . "\",\"" .                                        
                                         $valor['logradouro'] . "\",\"" .
                                         $valor['numero'] . "\",\"" .
                                         $valor['bairro'] . "\",\"" .

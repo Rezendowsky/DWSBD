@@ -1,11 +1,12 @@
 <?php
 
-class Paciente extends Pessoa{
+class Paciente {
     
     private $idPaciente;
     private $peso;
     private $altura;
     private $tipoSanguineo;
+    private $fkPessoa;
     
     public function set($prop, $value) {
         $this->$prop = $value;
@@ -21,6 +22,7 @@ class Paciente extends Pessoa{
         $objeto->set('peso', $this->peso);
         $objeto->set('altura', $this->altura);
         $objeto->set('tipoSanguineo', $this->tipoSanguineo);
+        $objeto->set('fkPessoa', $this->fkPessoa);
         $objeto->incluir();
     }
     
@@ -30,6 +32,7 @@ class Paciente extends Pessoa{
         $objeto->set('peso', $this->peso);
         $objeto->set('altura', $this->altura);
         $objeto->set('tipoSanguineo', $this->tipoSanguineo);
+        $objeto->set('fkPessoa', $this->fkPessoa);
         $objeto->alterar();
     }
     
@@ -45,6 +48,7 @@ class Paciente extends Pessoa{
         $objeto->set('peso', $this->peso);
         $objeto->set('altura', $this->altura);
         $objeto->set('tipoSanguineo', $this->tipoSanguineo);
+        $objeto->set('fkPessoa', $this->fkPessoa);
         return $objeto->consultar();
     }
 }
