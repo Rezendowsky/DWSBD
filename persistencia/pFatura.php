@@ -1,20 +1,19 @@
 <?php
 
-class Tratamento{
+class Fatura{
     
-    private $idTratamento;
-    private $medicacao;
-    private $sintomas;
-    private $instrucoes;
+    private $idFatura;
+    private $dataFatura;
+    private $valor;
     
     function incluir() {
         try {
             $obj = new Conexao();
 
             $sql = "INSERT INTO";
-            $sql .= " tratamento (medicacao, sintomas, instrucoes) ";
-            $sql .= " VALUES('$this->idTratamento','$this->medicacao', '$this->sintomas', '$this->instrucoes'";
-            echo($sql);
+            $sql .= " fatura (dataFatura, valor) ";
+            $sql .= " VALUES('$this->dataFatura', '$this->valor') ";
+
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();
@@ -27,10 +26,10 @@ class Tratamento{
         try {
             $obj = new Conexao();
             
-            $sql = "UPDATE tratamento";
-            $sql .= " SET medicacao = '$this->medicacao', sintomas = '$this->sintomas', instrucoes = '$this->instrucoes'";
-            $sql .= " WHERE idTratamento = '$this->idTratamento'";
-            echo($sql);
+            $sql = "UPDATE fatura";
+            $sql .= " SET dataFatura= '$this->dataFatura', valor= '$this->valor'";
+            $sql .= " WHERE idFatura = '$this->idFatura'";
+
             $obj->set('sql', $sql);
             $obj->query();
 
@@ -43,11 +42,14 @@ class Tratamento{
     function excluir() {
         try {
             $obj = new Conexao();
-            $sql = "DELETE FROM tratamento";
-            $sql .= " WHERE idTratamento = '$this->idTratamento'";
-            echo($sql);
+
+            $sql = "DELETE FROM fatura";
+            $sql .= " WHERE idFatura = '$this->idFatura'";
+
             $obj->set('sql', $sql);
+
             $obj->query();
+
             $obj->fechaconexao();
         } catch (Exception $e) {
             echo($e->getMessage());
@@ -58,19 +60,18 @@ class Tratamento{
         try {
             $obj = new Conexao();
             
-            $tratamento = array();
+            $fatura = array();
             $sql = "SELECT * ";
-            $sql .= " FROM tratamento";
-            echo($sql);
+            $sql .= " FROM fatura ";
             $obj->set('sql', $sql);
             $result = $obj->query();
             $i = 0;
             while ($myrow = $result->fetch_assoc()) {
-                $tratamento[$i] = $myrow;
+                $fatura[$i] = $myrow;
                 $i++;
             }
             $obj->fechaconexao();
-            return $tratamento;
+            return $fatura;
         } catch (Exception $e) {
             echo($e->getMessage());
         }
@@ -84,5 +85,3 @@ class Tratamento{
         return $this->$prop;
     }
 }
-    
-
