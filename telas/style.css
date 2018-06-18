@@ -1,15 +1,9 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
 /* 
     Created on : Jun 10, 2018, 4:45:37 PM
     Author     : giovanipaganini
 */
 
 /* Habilite para debug de Tabela */
-
 /* table, th, td {
     border: 1px solid black;
 } */
@@ -17,7 +11,7 @@ and open the template in the editor.
 body {
     color: #111;
     font-family: arial, helvetica, sans-serif;
-    font-size: 10pt;
+    font-size: 12pt;
     display: flex;
     margin: auto;
     padding: 40px;
@@ -25,7 +19,7 @@ body {
 }
 
 table {
-    width: 800px;
+    width: 1024px;
     box-shadow: 2px 1px 5px #ccc;
     margin-top: 10px;
     margin-bottom: 5px;    
@@ -35,12 +29,8 @@ table {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px 5px 0 0;
-    padding: 0;
+    padding: 0;    
 }
-
-/*.tableForm tr {
-    text-align: center;
-}*/
 
 #telaMenu {
     text-align: center;
@@ -50,7 +40,8 @@ table {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 0 0 5px 5px;
-    padding: 2px;    
+    padding: 2px;
+    font-size: 10pt;    
 }
 
 .tableResult td {
@@ -63,7 +54,7 @@ table {
 .tableHeader{
     background-color: lightgreen;
     color: darkgreen;    
-    border: 1px solid #darkgreen;    
+    border: 1px solid darkgreen;    
     text-align: left;
     padding: 2px;
 }
@@ -77,7 +68,7 @@ input {
 
 #sessao {
     margin: auto;
-    max-width: 800px;
+    max-width: 1024px;
 }
 
 .btn {
@@ -89,16 +80,52 @@ input {
     border-radius: 5px;
 }
 
+.btn:hover {
+    box-shadow: 0 3px #ccc;    
+}
+
+.btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px #aaa;
+    
+}
+
 .btnGravar {    
     background-color: #33cc33;
     color: white;
     border: 1px solid green;
 }
 
-.btnLimpar {
+.btnGravar:hover {    
+    background-color: green;
+    color: white;
+    border: 2px solid green;
+    font-style: bold;
+}
+
+.btnEditar {
     background-color: #ffcc00;
     color: white;
     border: 1px solid orange;    
+}
+
+.btnEditar:hover {
+    background-color: orange;
+    color: white;
+    border: 2px solid orange;  
+    font-style: bold;
+}
+
+.btnExcluir {
+    background-color: #ff4d4d;
+    color: white;
+    border: 1px solid orangered;    
+}
+
+.btnExcluir:hover {
+    background-color: #ff0000;
+    color: white;
+    border: 2px solid red;    
 }
 
 .btnMenu {
@@ -131,4 +158,8 @@ input {
     background-color: orange;
     color: white;
     border-color: darkorange;
+}
+
+.hidden {
+    display: none !important;
 }

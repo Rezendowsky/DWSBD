@@ -1,9 +1,3 @@
-/**
- * Negocio da classe Endere�o
- *
- * @author Eduardo Augusto <eduardo.agms@icloud.com>
- * @author Lucas Rezende <rezende099@icloud.com>
- */
 <?php
 
 class Endereco {
@@ -15,6 +9,7 @@ class Endereco {
     private $cidade;
     private $estado;
     private $cep;
+    private $fkPessoa;
 
     public function set($prop, $value) {
         $this->$prop = $value;
@@ -26,23 +21,27 @@ class Endereco {
 
     public function incluir() {
         $objeto = new pEndereco;
+        $objeto->set('idEndereco', $this->idEndereco);
         $objeto->set('logradouro', $this->logradouro);
         $objeto->set('numero', $this->numero);
         $objeto->set('bairro', $this->bairro);
         $objeto->set('cidade', $this->cidade);
         $objeto->set('estado', $this->estado);
         $objeto->set('cep', $this->cep);
+        $objeto->set('fkPessoa', $this->fkPessoa);
         $objeto->incluir();
     }
 
     public function alterar() {
         $objeto = new pEndereco;
+        $objeto->set('idEndereco', $this->idEndereco);
         $objeto->set('logradouro', $this->logradouro);
         $objeto->set('numero', $this->numero);
         $objeto->set('bairro', $this->bairro);
         $objeto->set('cidade', $this->cidade);
         $objeto->set('estado', $this->estado);
         $objeto->set('cep', $this->cep);
+        $objeto->set('fkPessoa', $this->fkPessoa);
         $objeto->alterar();
     }
 
@@ -54,12 +53,14 @@ class Endereco {
 
     public function consultar() {
         $objeto = new pEndereco;
+        $objeto->set('idEndereco', $this->idEndereco);
         $objeto->set('logradouro', $this->logradouro);
         $objeto->set('numero', $this->numero);
         $objeto->set('bairro', $this->bairro);
         $objeto->set('cidade', $this->cidade);
         $objeto->set('estado', $this->estado);
         $objeto->set('cep', $this->cep);
+        $objeto->set('fkPessoa', $this->fkPessoa);
         return $objeto->consultar();
     }
 

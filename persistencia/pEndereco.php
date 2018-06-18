@@ -1,29 +1,23 @@
-/**
- * Persistencia da classe Funcionario
- *
- * @author Giovani Paganini <giovanipaganini@outlook.com>
- * @author Eduardo Augusto <eduardo.agms@icloud.com>
- */
 <?php
 class pEndereco {
-    private $idendereco;
-    private $lougradouro;
+    private $idEndereco;
+    private $logradouro;
     private $numero;
     private $bairro;
     private $cidade;
     private $estado;
     private $cep;
+    private $fkPessoa;
 
     function incluir() {
         try {
-            $obj = new Conexao();
-
+            $obj = new Conexao();                
             $sql = "INSERT INTO";
-            $sql .= " endereco (logradouro, numero, bairro, cidade, estado, cep)";
-            $sql .= " VALUES('$this->lougradouro','$this->numero','$this->bairro','$this->cidade','$this->estado','$this->cep')";
-
+            $sql .= " endereco(logradouro, numero, bairro, cidade, estado, cep, fkPessoa)";
+            $sql .= " VALUES('$this->logradouro','$this->numero','$this->bairro','$this->cidade','$this->estado','$this->cep',(SELECT MAX(idPessoa) FROM pessoa))";            
+            echo($sql);
             $obj->set('sql', $sql);
-            $obj->query();
+            $obj->query();                        
             $obj->fechaconexao();
         } catch (Exception $e) {
             echo($e->getMessage());
@@ -35,9 +29,15 @@ class pEndereco {
             $obj = new Conexao();
             
             $sql = "UPDATE endereco";
-            $sql .= " SET lougradouro= '$this->lougradouro', numero= '$this->numero', bairro= '$this->bairro', cidade= '$this->cidade', estado= '$this->estado', cep= '$this->cep'";
-            $sql .= " WHERE idendereco = '$this->idendereco'";
-
+            $sql .= " SET logradouro= '$this->logradouro', "
+                    . "numero= '$this->numero', "
+                    . "bairro= '$this->bairro', "
+                    . "cidade= '$this->cidade', "
+                    . "estado= '$this->estado', "
+                    . "cep= '$this->cep', "
+                    . "fkPessoa= '$this->fkPessoa'";
+            $sql .= " WHERE idEndereco = '$this->idEndereco'";
+            echo($sql);
             $obj->set('sql', $sql);
             $obj->query();
 
@@ -50,14 +50,11 @@ class pEndereco {
     function excluir() {
         try {
             $obj = new Conexao();
-
             $sql = "DELETE FROM endereco";
-            $sql .= " WHERE idendereco = '$this->idendereco'";
-
+            $sql .= " WHERE idEndereco = '$this->idEndereco'";
+            echo($sql);
             $obj->set('sql', $sql);
-
             $obj->query();
-
             $obj->fechaconexao();
         } catch (Exception $e) {
             echo($e->getMessage());
@@ -70,7 +67,8 @@ class pEndereco {
             
             $endereco = array();
             $sql = "SELECT * ";
-            $sql .= " FROM endereco ";
+            $sql .= " FROM endereco";
+            echo($sql);
             $obj->set('sql', $sql);
             $result = $obj->query();
             $i = 0;
