@@ -114,6 +114,7 @@ if (!empty($_POST)) {
                         <td><input type="text" name="txtNome"/></td>
                         <td>Nascimento:</td>
                         <td><input type="date" name="txtNascimento"/></td>
+                        <td><input class="btn btnGravar" type="submit" value="Incluir Paciente" name="btnGravar"/></td>
 
                     </tr>
                     <tr>
@@ -135,7 +136,7 @@ if (!empty($_POST)) {
                         <td>CEP:</td>
                         <td><input type="text" name="txtCEP"/></td>
                         <td class="hidden"><input readonly="true" type="text" name="fkPessoa"/></td>
-                        <td>Nascimento:</td>
+                        <td>Data:</td>
                         <td><input type="date" name="txtNascimento"/></td>
 
                     </tr>
