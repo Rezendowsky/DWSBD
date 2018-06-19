@@ -109,8 +109,7 @@
             <form name="frmCad" method="post"
             action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <!--Variável escondida 'hidden' para manipulação do estado do formulário Vide: Diagrama de Estado na UML-->
-                <input name="txtValor" value="gravar">
-                <input type="checkbox" value="esconder">
+                <input class="hidden" name="txtValor" value="gravar">
                 <table class="tableForm">                
                     <tr class="tableHeader">
                         <th class="tdHeader" colspan="6">Historico Medico</th>

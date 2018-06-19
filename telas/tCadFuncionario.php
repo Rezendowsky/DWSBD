@@ -96,7 +96,7 @@ if (!empty($_POST)) {
                 <!--Variável escondida 'hidden' para manipulação do estado do formulário
                 Vide: Diagrama de Estado na UML
                 -->
-                <input type="hidden" name="txtValor" value="gravar">
+                <input class="hidden" name="txtValor" value="gravar">
                 <table class="tableForm">
     <!--                <thead class="tableHeader">                    
                         <th>Cadastro de Pessoa</th>                    

@@ -66,7 +66,7 @@ class HistoricoMedico{
             $historico = array();
             $sql = "SELECT * ";
             $sql .= " FROM historico ";
-            echo($sql);
+            
             $obj->set('sql', $sql);
             $result = $obj->query();
             $i = 0;
