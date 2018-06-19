@@ -80,7 +80,8 @@ class pPaciente {
             $obj = new Conexao();            
             $paciente = array();
             $sql = "SELECT * ";
-            $sql .= " FROM pessoa p INNER JOIN paciente pa ON p.idPessoa = pa.idPaciente WHERE nome = '$this->nome'";
+            $sql .= " FROM pessoa p INNER JOIN paciente pa ON p.idPessoa = pa.idPaciente"; 
+            $sql .= " WHERE idPaciente = '$this->idPaciente' ";
             echo($sql);
             $obj->set('sql', $sql);
             $result = $obj->query();

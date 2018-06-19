@@ -85,7 +85,7 @@ class pPessoa {
             
             $pessoa = array();
             $sql = "SELECT * ";
-            $sql .= " FROM pessoa p INNER JOIN endereco e ON";
+            $sql .= " FROM pessoa";
             $sql .= " WHERE nome = '$this->nome'";
             echo($sql);
             $obj->set('sql', $sql);

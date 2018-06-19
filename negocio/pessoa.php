@@ -55,5 +55,16 @@ class Pessoa {
         $objeto->set('nascimento', $this->nascimento);
         $objeto->set('telefone', $this->telefone);
         return $objeto->consultar();
-    }    
+    }
+    
+    public function consultarPessoa() {
+        $objeto = new pPessoa;
+        $objeto->set('idPessoa', $this->idPessoa);
+        $objeto->set('nome', $this->nome);
+        $objeto->set('cpf', $this->cpf);
+        $objeto->set('sexo', $this->sexo);
+        $objeto->set('nascimento', $this->nascimento);
+        $objeto->set('telefone', $this->telefone);
+        return $objeto->consultar();
+    }   
 }

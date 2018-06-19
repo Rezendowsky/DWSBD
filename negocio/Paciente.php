@@ -51,4 +51,14 @@ class Paciente {
         $objeto->set('fkPessoa', $this->fkPessoa);
         return $objeto->consultar();
     }
+
+    public function consultarPaciente() {
+        $objeto = new pPaciente;
+        $objeto->set('idPaciente', $this->idPaciente);
+        $objeto->set('peso', $this->peso);
+        $objeto->set('altura', $this->altura);
+        $objeto->set('tipoSanguineo', $this->tipoSanguineo);
+        $objeto->set('fkPessoa', $this->fkPessoa);
+        return $objeto->consultarPaciente();
+    }
 }

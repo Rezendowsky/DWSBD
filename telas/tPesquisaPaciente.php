@@ -41,7 +41,7 @@
             $objetoEndereco->alterar();
             $objetoPaciente->alterar();
         } else if ($_POST['txtValor'] == 'pesquisar') {            
-            $objetoPaciente->consultarPaciente();
+            $objetoPessoa->consultarPessoa();
         } else if ($_POST['txtValor'] == 'excluir') {        
             $objeto->excluir();
         }
@@ -54,29 +54,29 @@
         <link href="style.css" rel="stylesheet" type="text/css"/>
 
         <script type="text/javascript">
-            function editar(cod, fkPessoa, nome, cpf, nascimento, telefone, sexo,
-            paciente, peso, altura, tipoSanguineo,
-            endereco, logradouro, numero, bairro, cidade, estado, cep) {
-                document.frmCad.txtPessoa.value = cod;
-                document.frmCad.fkPessoa.value = fkPessoa;
-                document.frmCad.txtNome.value = nome;
-                document.frmCad.txtCpf.value = cpf;
-                document.frmCad.txtNascimento.value = nascimento;
-                document.frmCad.txtTelefone.value = telefone;
-                document.frmCad.rdbSexo.value = sexo;
-                document.frmCad.txtPaciente.value = paciente;
-                document.frmCad.txtPeso.value = peso;
-                document.frmCad.txtAltura.value = altura;
-                document.frmCad.txtTipoSanguineo.value = tipoSanguineo;
-                document.frmCad.txtEndereco.value = endereco;            
-                document.frmCad.txtLogradouro.value = logradouro;
-                document.frmCad.txtNumero.value = numero;
-                document.frmCad.txtBairro.value = bairro;
-                document.frmCad.txtCidade.value = cidade;
-                document.frmCad.txtEstado.value = estado;
-                document.frmCad.txtCEP.value = cep;                    
-                document.frmCad.txtValor.value = "editar";
-            }
+            // function editar(cod, fkPessoa, nome, cpf, nascimento, telefone, sexo,
+            // paciente, peso, altura, tipoSanguineo,
+            // endereco, logradouro, numero, bairro, cidade, estado, cep) {
+            //     document.frmCad.txtPessoa.value = cod;
+            //     document.frmCad.fkPessoa.value = fkPessoa;
+            //     document.frmCad.txtNome.value = nome;
+            //     document.frmCad.txtCpf.value = cpf;
+            //     document.frmCad.txtNascimento.value = nascimento;
+            //     document.frmCad.txtTelefone.value = telefone;
+            //     document.frmCad.rdbSexo.value = sexo;
+            //     document.frmCad.txtPaciente.value = paciente;
+            //     document.frmCad.txtPeso.value = peso;
+            //     document.frmCad.txtAltura.value = altura;
+            //     document.frmCad.txtTipoSanguineo.value = tipoSanguineo;
+            //     document.frmCad.txtEndereco.value = endereco;            
+            //     document.frmCad.txtLogradouro.value = logradouro;
+            //     document.frmCad.txtNumero.value = numero;
+            //     document.frmCad.txtBairro.value = bairro;
+            //     document.frmCad.txtCidade.value = cidade;
+            //     document.frmCad.txtEstado.value = estado;
+            //     document.frmCad.txtCEP.value = cep;                    
+            //     document.frmCad.txtValor.value = "editar";
+            // }
             
             function pesquisar(idPessoa, fkPessoa, nome, cpf, nascimento, telefone, sexo,
             paciente, peso, altura, tipoSanguineo) {
@@ -141,10 +141,10 @@
                     </tr>
                     <?php
                         $count = 0;
-                        $objetoPaciente = new Paciente();
+                        $objetoPessoa = new Pessoa();
 
-                        if ($objetoPaciente->consultarPaciente() != null) {
-                            foreach ($objetoPaciente->consultarPaciente() as $valor) {
+                        if ($objetoPessoa->consultarPessoa() != null) {
+                            foreach ($objetoPessoa->consultarPessoa() as $valor) {
                                 $count += 1;
                                 echo ('<tr>');
                                 echo("<td>" . $count . "</td>");
