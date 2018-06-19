@@ -107,35 +107,33 @@ if (!empty($_POST)) {
                     </tr>
                     <tr>
                         <td>Paciente:</td>
-                        <td><input type="text" name="txtNumero"/></td>
+                        <td><input type="text" name="txtNumero" placeholder="Pesquisar: Joao da Silva"/></td>
                     </tr>
                     <tr>
                         <td>Nome:</td>
-                        <td><input type="text" name="txtNome"/></td>
+                        <td><input type="text" name="txtNome" placeholder="Joao da Silva"/></td>
                         <td>Nascimento:</td>
-                        <td><input type="date" name="txtNascimento"/></td>
+                        <td><input type="date" name="txtNascimento" placeholder="21/09/1954"/></td>
                         <td><input class="btn btnGravar" type="submit" value="Incluir Paciente" name="btnGravar"/></td>
 
                     </tr>
                     <tr>
                         <td>Cpf:</td>
-                        <td><input type="text" name="txtCpf"/></td>
+                        <td><input type="text" name="txtCpf" placeholder="CPF: 701.094.251-58"/></td>
                         <td>Telefone:</td>
-                        <td><input type="text" name="txtTelefone"/></td>
+                        <td><input type="text" name="txtTelefone" placeholder="(64)992948687"/></td>
 
                     </tr>
                     <tr>
                         <td>Bairro:</td>
-                        <td><input type="text" name="txtBairro"/></td>
-                        <td>Estado:</td>
-                        <td><input type="text" name="txtEstado"/></td>
+                        <td><input type="text" name="txtBairro" placeholder="Avenida das Dores numero 7"/></td>
                     </tr>
                     <tr>
 
 
                         <td>CEP:</td>
-                        <td><input type="text" name="txtCEP"/></td>
-                        <td class="hidden"><input readonly="true" type="text" name="fkPessoa"/></td>
+                        <td><input type="text" name="txtCEP" placeholder="75650-000"/></td>
+                        <td class="hidden"><input readonly="true" type="text" name="fkPessoa" placeholder="75650-000"/></td>
                         <td>Data:</td>
                         <td><input type="date" name="txtNascimento"/></td>
 
