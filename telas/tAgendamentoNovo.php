@@ -63,7 +63,7 @@
                     <tr>
                         <td colspan="6">
                             <input class="btn btnGravar" type="submit" value="Gravar" name="btnGravar"/>
-                            <input class="btn btnLimpar" type="reset" value="Limpar" name="btnLimpar"/>
+                            <input class="btn btnEditar" type="reset" value="Limpar" name="btnLimpar"/>
                         </td>
                     </tr>
                 </table>
