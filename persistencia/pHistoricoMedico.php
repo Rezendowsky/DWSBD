@@ -1,22 +1,24 @@
 <?php
 
-class pConsulta{
-    private $idConsulta;
-    private $dataConsulta;
-    private $fkCronograma;
-    private $motivo;
+class HistoricoMedico{
+    
+    private $idHistoricoMedico;
+    private $medicoAnterior;
+    private $historico;
+    private $fkPaciente;
     
     function incluir() {
         try {
             $obj = new Conexao();
 
             $sql = "INSERT INTO";
-            $sql .= " consulta (dataConsulta, motivo) ";
-            $sql .= " VALUES('$this->dataConsulta', '$this->motivo') ";
+            $sql .= " historicoMEdico (idHistoricoMedico, medicoAnterior, historico, fkPaciente) ";
+            $sql .= " VALUES('$this->idHistoricoMedico','$this->medicoAnterior', '$this->historico', (SELECT MAX(idPaciente) FROM paciente)) ";
 
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();
+            
         } catch (Exception $e) {
             echo($e->getMessage());
         }
@@ -25,10 +27,11 @@ class pConsulta{
     function alterar() {
         try {
             $obj = new Conexao();
-            
-            $sql = "UPDATE consulta";
-            $sql .= " SET dataConsulta= '$this->dataConsulta', motivo= '$this->motivo'";
-            $sql .= " WHERE idConsulta = '$this->idConsulta'";
+
+            $sql = "UPDATE historicoMedico";
+            $sql .= " SET medicoAnterior= '$this->medicoAnterior', "
+                    . "historico= '$this->historico', ";
+            $sql .= " WHERE idHistoricoMedico = '$this->idHistoricoMedico'";
 
             $obj->set('sql', $sql);
             $obj->query();
@@ -43,8 +46,8 @@ class pConsulta{
         try {
             $obj = new Conexao();
 
-            $sql = "DELETE FROM consulta";
-            $sql .= " WHERE idConsulta = '$this->idConsulta'";
+            $sql = "DELETE FROM historicoMedico";
+            $sql .= " WHERE idHistoricoMedico = '$this->idHistoricoMedico'";
 
             $obj->set('sql', $sql);
 
@@ -59,19 +62,20 @@ class pConsulta{
     function consultar() {
         try {
             $obj = new Conexao();
-            
-            $consulta = array();
+
+            $historico = array();
             $sql = "SELECT * ";
-            $sql .= " FROM consulta ";
+            $sql .= " FROM historico ";
+            echo($sql);
             $obj->set('sql', $sql);
             $result = $obj->query();
             $i = 0;
             while ($myrow = $result->fetch_assoc()) {
-                $consulta[$i] = $myrow;
+                $historico[$i] = $myrow;
                 $i++;
             }
             $obj->fechaconexao();
-            return $consulta;
+            return $historico;
         } catch (Exception $e) {
             echo($e->getMessage());
         }
@@ -84,4 +88,5 @@ class pConsulta{
     function get($prop) {
         return $this->$prop;
     }
+
 }
