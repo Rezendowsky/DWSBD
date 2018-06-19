@@ -3,7 +3,7 @@
 class pConsulta{
     private $idConsulta;
     private $dataConsulta;
-    private $cronograma;
+    private $fkCronograma;
     private $motivo;
     
     function incluir() {
