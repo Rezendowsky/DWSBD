@@ -18,8 +18,9 @@ and open the template in the editor.
                         <th class="tdHeader" colspan="3">Recepcionista</th>
                     </tr>
                     <tr>
-                        <td><input class="btn btnMenu btnMenuNeutro" type="submit" value="Pesquisar Paciente" name="btnMenu"/></td>
-                        <td><input class="btn btn btnMenu btnMenuPositivo" type="submit" value="Registrar Paciente" name="btnMenu"/></td>
+                        <td><input class="btn btnMenu btnMenuNeutro" type="button" 
+                            onclick="location.href='tPesquisaPaciente.php'" value="Pesquisar Paciente" name="btnMenu"/></td>
+                        <td><input class="btn btn btnMenu btnMenuPositivo" type="button" value="Registrar Paciente" name="btnMenu"/></td>
                     </tr>
                     <tr>
                         <td><input class="btn btnMenu btnMenuNeutro" type="submit" value="Pesquisar Funcionário" name="btnMenu"/></td>

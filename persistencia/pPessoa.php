@@ -79,6 +79,29 @@ class pPessoa {
         }
     }
 
+    function consultarPessoa() {
+        try {
+            $obj = new Conexao();
+            
+            $pessoa = array();
+            $sql = "SELECT * ";
+            $sql .= " FROM pessoa";
+            $sql .= " WHERE nome = '$this->nome'";
+            echo($sql);
+            $obj->set('sql', $sql);
+            $result = $obj->query();
+            $i = 0;
+            while ($myrow = $result->fetch_assoc()) {
+                $pessoa[$i] = $myrow;
+                $i++;
+            }
+            $obj->fechaconexao();
+            return $pessoa;
+        } catch (Exception $e) {
+            echo($e->getMessage());
+        }
+    }
+
     function set($prop, $value) {
         $this->$prop = $value;
     }

@@ -59,6 +59,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
         <link href="style.css" rel="stylesheet" type="text/css"/>
+        <title>Historico Medico</title>
 
         <script type="text/javascript">
         // function editar(cod, nome, cpf, nascimento, telefone, sexo) {
@@ -112,62 +113,23 @@
                 <input type="checkbox" value="esconder">
                 <table class="tableForm">                
                     <tr class="tableHeader">
-                        <th class="tdHeader" colspan="6">Registro de Paciente</th>
+                        <th class="tdHeader" colspan="6">Historico Medico</th>
                     </tr>
                     <tr>
-                        <td>Id:</td>
-                        <td><input readonly="true" type="text" id="txtPessoa" name="txtPessoa" /></td>                        
+                        <td>Medico Anterior:</td>
+                        <td><input type="text" id="txtPessoa" name="txtHistoricoMedico" /></td>                        
                         <td class="hidden">fkPessoa<input readonly="true" type="text" name="fkPessoa"/></td>                        
                         <td class="hidden">idEndereco<input readonly="true" type="text" id="txtEndereco" name="txtEndereco"/></td>
-                        <td>Logradouro:</td>
-                        <td><input type="text" name="txtLogradouro" required/></td>
-                        <td>Nº:</td>
-                        <td><input type="text" name="txtNumero" required/></td>
+                        <td>Pesquisar Paciente:</td>
+                        <td><input type="text" name="txtPesquisar" required/></td>
                     </tr>
                     <tr>
-                        <td>Nome:</td>
+                        <td>Pessoa:</td>
                         <td><input type="text" name="txtNome" required/></td>
-                        <td>Bairro:</td>
-                        <td><input type="text" name="txtBairro" required/></td>
                     </tr>
                     <tr>
-                        <td>Cpf:</td>
-                        <td><input type="text" name="txtCpf" required/></td>
-                        <td>Cidade:</td>
-                        <td><input type="text" name="txtCidade" required/></td>
-                    </tr>
-                    <tr>
-                        <td>Nascimento:</td>
-                        <td><input type="date" name="txtNascimento" required/></td>
-                        <td>Estado:</td>
-                        <td><input type="text" name="txtEstado" required/></td>
-                    </tr>
-                    <tr>
-                        <td>Telefone:</td>
-                        <td><input type="text" name="txtTelefone" required/></td>
-                        <td>CEP:</td>
-                        <td><input type="text" name="txtCEP" required/></td>                        
-                    </tr>
-                    <tr>
-                        <td>Sexo:</td>
-                        <td><input type="radio" name="rdbSexo" value="M" checked required/>Masculino
-                        <input type="radio" name="rdbSexo" value="F" required/>Feminino</td>                        
-                    </tr>
-                    <tr class="hidden">
-                        <td>Paciente</td>
-                        <td><input readonly="true" type="text" name="txtPaciente" required/></td>
-                    </tr>
-                    <tr>
-                        <td>Peso</td>
-                        <td><input type="text" name="txtPeso" required/></td>
-                    </tr>
-                    <tr>
-                        <td>Altura</td>
-                        <td><input type="text" name="txtAltura" required/></td>
-                    </tr>
-                    <tr>
-                        <td>Tipo Sanguineo</td>
-                        <td><input type="text" name="txtTipoSanguineo" required/></td>
+                        <td>Historico:</td>
+                        <td><input type="textarea" name="msgHistorico" required/></td>           
                     </tr>
                     <tr>
                         <td colspan="6">
