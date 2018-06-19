@@ -60,10 +60,11 @@ table {
 }
 
 
-input {
+input[type=text] {
     border-radius: 5px;
     border: 1px solid #ddd;
-    padding: 5px;   
+    padding: 5px 0;
+    width: 100%;   
 }
 
 #sessao {
