@@ -20,9 +20,9 @@ if (!empty($_POST)) {
 	$objeto->set('idPessoa', $_POST['txtPessoa']);
 	$objeto->set('nome', $_POST['txtNome']);
 	$objeto->set('cpf', $_POST['txtCpf']);
-	$objeto->set('sexo', $_POST['rdbSexo']);
 	$objeto->set('nascimento', $_POST['txtNascimento']);
-	$objeto->set('telefone', $_POST['txtTelefone']);
+    $objeto->set('telefone', $_POST['txtTelefone']);
+    $objeto->set('sexo', $_POST['rdbSexo']);
 
 	$objetoEndereco = new Endereco();
 	$objetoEndereco->set('idEndereco', $_POST['txtEndereco']);   
