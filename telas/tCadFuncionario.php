@@ -1,5 +1,4 @@
 <?php
-//Lucas e Eduardo
 //1 - Inicializa para o Apache Emitir Erro na tela
 //0 - Desabilita o Apache a Emitir Erro na tela
 ini_set("display_errors", 1);
@@ -53,102 +52,100 @@ if (!empty($_POST)) {
     }
 }
 ?>
-<html>
-    <head>        
-        <link href="style.css" rel="stylesheet" type="text/css"/>
-        <script type="text/javascript">
-            function editar(cod, nome, cpf, nascimento, telefone, sexo, 
-            endereco, fkPessoa, logradouro, numero, bairro, cidade, estado, cep, 
+<!DOCTYPE HTML>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">        
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript">
+        function editar(cod, fkPessoa, nome, cpf, nascimento, telefone, sexo, 
+            endereco, logradouro, numero, bairro, cidade, estado, cep, 
             funcionario, cargo, salario) {
-                document.frmCad.txtPessoa.value = cod;
-                document.frmCad.txtNome.value = nome;
-                document.frmCad.txtCpf.value = cpf;
-                document.frmCad.txtNascimento.value = nascimento;
-                document.frmCad.txtTelefone.value = telefone;
-                document.frmCad.rdbSexo.value = sexo;
-                
-                document.frmCad.txtEndereco.value = endereco;                
-                document.frmCad.fkPessoa.value = fkPessoa;
-                document.frmCad.txtLogradouro.value = logradouro;
-                document.frmCad.txtNumero.value = numero;
-                document.frmCad.txtBairro.value = bairro;
-                document.frmCad.txtCidade.value = cidade;
-                document.frmCad.txtEstado.value = estado;
-                document.frmCad.txtCEP.value = cep;
-                
-                document.frmCad.txtFuncionario.value = funcionario;
-                document.frmCad.txtCargo.value = cargo;
-                document.frmCad.txtSalario.value = salario;
-                document.frmCad.txtValor.value = "editar";
-            }
-            function excluir(cod) {
-                document.frmCad.txtPessoa.value = cod;
-                document.frmCad.txtValor.value = "excluir";
-                document.frmCad.submit();
-            }
-        </script>
-    </head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <body>
-        <div id="sessao">
-            <form name="frmCad" method="post"
-                  action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            document.frmCad.txtPessoa.value = cod;
+            document.frmCad.fkPessoa.value = fkPessoa;
+            document.frmCad.txtNome.value = nome;
+            document.frmCad.txtCpf.value = cpf;
+            document.frmCad.txtNascimento.value = nascimento;
+            document.frmCad.txtTelefone.value = telefone;
+            document.frmCad.rdbSexo.value = sexo;
+            
+            document.frmCad.txtEndereco.value = endereco;                
+            document.frmCad.txtLogradouro.value = logradouro;
+            document.frmCad.txtNumero.value = numero;
+            document.frmCad.txtBairro.value = bairro;
+            document.frmCad.txtCidade.value = cidade;
+            document.frmCad.txtEstado.value = estado;
+            document.frmCad.txtCEP.value = cep;
+            
+            document.frmCad.txtFuncionario.value = funcionario;
+            document.frmCad.txtCargo.value = cargo;
+            document.frmCad.txtSalario.value = salario;
+
+            document.frmCad.txtValor.value = "editar";
+        }
+        function excluir(cod) {
+            document.frmCad.txtPessoa.value = cod;
+            document.frmCad.txtValor.value = "excluir";
+            document.frmCad.submit();
+        }
+    </script>
+</head>
+
+<body>
+    <div id="sessao">
+        <form name="frmCad" method="post"
+        action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <!--Variável escondida 'hidden' para manipulação do estado do formulário
                 Vide: Diagrama de Estado na UML
-                -->
-                <input class="hidden" name="txtValor" value="gravar">
-                <table class="tableForm">
-    <!--                <thead class="tableHeader">                    
-                        <th>Cadastro de Pessoa</th>                    
-                    </thead>-->
+            -->
+            <input class="hidden" name="txtValor" value="gravar">
+            <table class="tableForm">
+                <tr class="tableHeader">
+                    <th class="tdHeader" colspan="6">Registro de Funcionário</th>
+                </tr>
+                <tr>
+                    <td>Id:</td>
+                    <td><input readonly="true" type="text" id="txtPessoa" name="txtPessoa"/></td>
+                    <td class="hidden">fkPessoa<input readonly="true" type="text" name="fkPessoa"/></td>
+                    <td class="hidden">idEndereco<input readonly="true" type="text" id="txtEndereco" name="txtEndereco"/></td>
+                    <td class="hidden">idFuncionario<input readonly="true" type="text" id="txtFuncionario" name="txtFuncionario"/></td>
 
-                    <tr class="tableHeader">
-                        <th class="tdHeader" colspan="6">Registro de Funcionário</th>
-                    </tr>
-                    <tr>
-                        <td>Id:</td>
-                        <td><input readonly="true" type="text" id="txtPessoa" name="txtPessoa"/></td>
-                        <td class="hidden"><input readonly="true" type="text" id="txtEndereco" name="txtEndereco"/></td>
-                        <td class="hidden"><input readonly="true" type="text" id="txtFuncionario" name="txtFuncionario"/></td>
-
-                        <td>Logradouro:</td>
-                        <td><input type="text" name="txtLogradouro"/></td>
-                        <td>Nº:</td>
-                        <td><input type="text" name="txtNumero"/></td>
-                    </tr>
-                    <tr>
-                        <td>Nome:</td>
-                        <td><input type="text" name="txtNome"/></td>
-                        <td>Bairro:</td>
-                        <td><input type="text" name="txtBairro"/></td>
-                        <td>Cargo:</td>
-                        <td><input type="text" name="txtCargo"/></td>
-                    </tr>
-                    <tr>
-                        <td>Cpf:</td>
-                        <td><input type="text" name="txtCpf"/></td>
-                        <td>Cidade:</td>
-                        <td><input type="text" name="txtCidade"/></td>
-                        <td>Salário:</td>
-                        <td><input type="text" name="txtSalario"/></td>
-                    </tr>
-                    <tr>
-                        <td>Nascimento:</td>
-                        <td><input type="date" name="txtNascimento"/></td>
-                        <td>Estado:</td>
-                        <td><input type="text" name="txtEstado"/></td>
-                    </tr>
-                    <tr>
-                        <td>Telefone:</td>
-                        <td><input type="text" name="txtTelefone"/></td>
-                        <td>CEP:</td>
-                        <td><input type="text" name="txtCEP"/></td>
-                        <td class="hidden"><input readonly="true" type="text" name="fkPessoa"/></td>
-                    </tr>
-                    <tr>
-                        <td>Sexo:</td>
-                        <td><input type="radio" name="rdbSexo" value="M" />Masculino
-                            <input type="radio" name="rdbSexo" value="F" />Feminino</td>
+                    <td>Logradouro:</td>
+                    <td><input type="text" name="txtLogradouro"/></td>
+                    <td>Nº:</td>
+                    <td><input type="text" name="txtNumero"/></td>
+                </tr>
+                <tr>
+                    <td>Nome:</td>
+                    <td><input type="text" name="txtNome"/></td>
+                    <td>Bairro:</td>
+                    <td><input type="text" name="txtBairro"/></td>
+                    <td>Cargo:</td>
+                    <td><input type="text" name="txtCargo"/></td>
+                </tr>
+                <tr>
+                    <td>Cpf:</td>
+                    <td><input type="text" name="txtCpf"/></td>
+                    <td>Cidade:</td>
+                    <td><input type="text" name="txtCidade"/></td>
+                    <td>Salário:</td>
+                    <td><input type="text" name="txtSalario"/></td>
+                </tr>
+                <tr>
+                    <td>Nascimento:</td>
+                    <td><input type="date" name="txtNascimento"/></td>
+                    <td>Estado:</td>
+                    <td><input type="text" name="txtEstado"/></td>
+                </tr>
+                <tr>
+                    <td>Telefone:</td>
+                    <td><input type="text" name="txtTelefone"/></td>
+                    <td>CEP:</td>
+                    <td><input type="text" name="txtCEP"/></td>                    
+                </tr>
+                <tr>
+                    <td>Sexo:</td>
+                    <td><input type="radio" name="rdbSexo" value="M" />Masculino
+                        <input type="radio" name="rdbSexo" value="F" />Feminino</td>
                     </tr>
                     <tr>
                         <td colspan="6">
@@ -160,21 +157,21 @@ if (!empty($_POST)) {
                 <table class="tableResult" cellspacing="1" cellpadding="1">
                     <tr>
                         <td>#</td>
-                        <td>ID Pessoa</td>                    
+                        <td>ID Pessoa</td>
+                        <td class="hidden">fkPessoa</td>
                         <td>Nome</td>
                         <td>CPF</td>
                         <td>Nascimento</td>
                         <td>Telefone</td>
                         <td>Sexo</td>
-                        <td class="hidden">idEndereco</td>
-                        <td class="hidden">fkPessoa</td>
+                        <td class="hidden">idEndereco</td>                        
                         <td>Logradouro</td>
                         <td>Nº</td>
                         <td>Bairro</td>
                         <td>Cidade</td>
                         <td>Estado</td>
                         <td>CEP</td>                    
-                        <td>idFuncionario</td>
+                        <td class="hidden">idFuncionario</td>
                         <td>Cargo</td>                    
                         <td>Salario</td>                    
                         <td>&emsp;</td>
@@ -182,49 +179,49 @@ if (!empty($_POST)) {
                     </tr>
                     <?php
                     $count = 0;
-                    $objeto = new Pessoa();
-                    if ($objeto->consultar() != null) {
-                        foreach ($objeto->consultar() as $valor) {
+                    $objetoFuncionario = new Funcionario();
+                    if ($objetoFuncionario->consultarFuncionario() != null) {
+                        foreach ($objetoFuncionario->consultarFuncionario() as $valor) {
                             $count += 1;
                             echo ('<tr>');
                             echo("<td>" . $count . "</td>");
                             echo("<td>" . $valor['idPessoa'] . "</td>");
+                            echo("<td class=\"hidden\">" . $valor['fkPessoa'] . "</td>");
                             echo("<td>" . $valor['nome'] . "</td>");
                             echo("<td>" . $valor['cpf'] . "</td>");
                             echo("<td>" . $valor['nascimento'] . "</td>");
                             echo("<td>" . $valor['telefone'] . "</td>");
                             echo("<td>" . $valor['sexo'] . "</td>");
                             echo("<td class=\"hidden\">" . $valor['idEndereco'] . "</td>");
-                            echo("<td class=\"hidden\">" . $valor['fkPessoa'] . "</td>");
                             echo("<td>" . $valor['logradouro'] . "</td>");
                             echo("<td>" . $valor['numero'] . "</td>");
                             echo("<td>" . $valor['bairro'] . "</td>");
                             echo("<td>" . $valor['cidade'] . "</td>");
                             echo("<td>" . $valor['estado'] . "</td>");
                             echo("<td>" . $valor['cep'] . "</td>");
-                            echo("<td>" . $valor['idFuncionario'] . "</td>");
+                            echo("<td class=\"hidden\">" . $valor['idFuncionario'] . "</td>");
                             echo("<td>" . $valor['cargo'] . "</td>");
                             echo("<td>" . $valor['salario'] . "</td>");
                             echo("<td><INPUT class='btn btnEditar' TYPE='button' VALUE='Editar'
-                                    onClick='editar(" . $valor['idPessoa'] . ",\"" .
-                            $valor['nome'] . "\",\"" .
-                            $valor['cpf'] . "\",\"" .
-                            $valor['nascimento'] . "\",\"" .
-                            $valor['telefone'] . "\",\"" .
-                            $valor['sexo'] . "\",\"" .
-                            $valor['idEndereco'] . "\",\"" .
-                            $valor['fkPessoa'] . "\",\"" .
-                            $valor['logradouro'] . "\",\"" .
-                            $valor['numero'] . "\",\"" .
-                            $valor['bairro'] . "\",\"" .
-                            $valor['cidade'] . "\",\"" .
-                            $valor['estado'] . "\",\"" .
-                            $valor['cep'] . "\",\"" .
-                            $valor['idFuncionario'] . "\",\"" .
-                            $valor['cargo'] . "\",\"" .
-                            $valor['salario'] . "\");'></td>");
+                                onClick='editar(" . $valor['idPessoa'] . ",\"" .
+                                $valor['fkPessoa'] . "\",\"" .
+                                $valor['nome'] . "\",\"" .
+                                $valor['cpf'] . "\",\"" .
+                                $valor['nascimento'] . "\",\"" .
+                                $valor['telefone'] . "\",\"" .
+                                $valor['sexo'] . "\",\"" .
+                                $valor['idEndereco'] . "\",\"" .
+                                $valor['logradouro'] . "\",\"" .
+                                $valor['numero'] . "\",\"" .
+                                $valor['bairro'] . "\",\"" .
+                                $valor['cidade'] . "\",\"" .
+                                $valor['estado'] . "\",\"" .
+                                $valor['cep'] . "\",\"" .
+                                $valor['idFuncionario'] . "\",\"" .
+                                $valor['cargo'] . "\",\"" .
+                                $valor['salario'] . "\");'></td>");
                             echo("<td><INPUT class='btn btnExcluir' TYPE='button' VALUE='Excluir'
-                                    onClick='excluir(" . $valor['idPessoa'] . ");'></td>");
+                                onClick='excluir(" . $valor['idPessoa'] . ");'></td>");
                             echo ('</tr>');
                         }
                     } else {
@@ -235,4 +232,4 @@ if (!empty($_POST)) {
             </form>
         </div>
     </body>
-</html>
+    </html>
