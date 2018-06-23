@@ -28,9 +28,9 @@ class pPaciente {
         try {
             $obj = new Conexao();            
             $sql = "UPDATE paciente";
-            $sql .= " SET peso= '$this->peso', altura= '$this->altura', tipoSanguineo= '$this->tipoSanguineo', fkPessoa= '$this->fkPessoa'";
-            echo($sql);
+            $sql .= " SET peso= '$this->peso', altura= '$this->altura', tipoSanguineo= '$this->tipoSanguineo', fkPessoa= '$this->fkPessoa'";            echo($sql);
             $sql .= " WHERE idPaciente = '$this->idPaciente'";
+            echo($sql);
             $obj->set('sql', $sql);
             $obj->query();
 
@@ -80,16 +80,16 @@ class pPaciente {
             $obj = new Conexao();            
             $paciente = array();
             $sql = "SELECT * ";
-            $sql .= " FROM pessoa p INNER JOIN paciente pa ON p.idPessoa = pa.idPaciente"; 
-            $sql .= " WHERE idPaciente = '$this->idPaciente' ";
-            
+            $sql .= " FROM pessoa p INNER JOIN endereco e ON"; 
+            $sql .= " p.idPessoa = e.fkPessoa INNER JOIN paciente pa ON p.idPessoa = pa.fkPessoa";
+            echo($sql);
             $obj->set('sql', $sql);
             $result = $obj->query();
-            // $i = 0;
-            // while ($myrow = $result->fetch_assoc()) {
-            //     $paciente[$i] = $myrow;
-            //     $i++;
-            // }
+            $i = 0;
+            while ($myrow = $result->fetch_assoc()) {
+                $paciente[$i] = $myrow;
+                $i++;
+            }
             $obj->fechaconexao();
             return $paciente;
         } catch (Exception $e) {
