@@ -8,3 +8,9 @@ nbproject/private/config\.properties
 nbproject/private/private\.properties
 
 *.json
+
+\.Rhistory
+
+\.DS_Store
+
+*.zip
