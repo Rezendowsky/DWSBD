@@ -1,10 +1,11 @@
 <?php
 
-class Consulta{
+class Consulta {
     private $idConsulta;
     private $dataConsulta;
-    private $cronograma;
     private $motivo;
+    private $fkFuncionario;
+    private $fkPaciente;
     
     public function set($prop, $value) {
         $this->$prop = $value;
@@ -17,9 +18,10 @@ class Consulta{
     public function incluir() {
         $objeto = new pConsulta;
         $objeto->set('idConsulta', $this->idConsulta);
-        $objeto->set('dataConsulta', $this->dataConsulta);
-        $objeto->set('cronograma', $this->cronograma);
+        $objeto->set('dataConsulta', $this->dataConsulta);        
         $objeto->set('motivo', $this->motivo);
+        $objeto->set('fkFuncionario', $this->fkFuncionario);
+        $objeto->set('fkPaciente', $this->fkPaciente);
         $objeto->incluir();
     }
 
@@ -27,8 +29,9 @@ class Consulta{
         $objeto = new pConsulta;
         $objeto->set('idConsulta', $this->idConsulta);
         $objeto->set('dataConsulta', $this->dataConsulta);
-        $objeto->set('cronograma', $this->cronograma);
         $objeto->set('motivo', $this->motivo);
+        $objeto->set('fkFuncionario', $this->fkFuncionario);
+        $objeto->set('fkPaciente', $this->fkPaciente);
         $objeto->alterar();
     }
 
@@ -42,8 +45,9 @@ class Consulta{
         $objeto = new pConsulta;
         $objeto->set('idConsulta', $this->idConsulta);
         $objeto->set('dataConsulta', $this->dataConsulta);
-        $objeto->set('cronograma', $this->cronograma);
         $objeto->set('motivo', $this->motivo);
+        $objeto->set('fkFuncionario', $this->fkFuncionario);
+        $objeto->set('fkPaciente', $this->fkPaciente);
         return $objeto->consultar();
     }
 

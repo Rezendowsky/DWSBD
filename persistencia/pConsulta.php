@@ -2,17 +2,17 @@
 
 class pConsulta{
     private $idConsulta;
-    private $dataConsulta;
-    private $fkCronograma;
+    private $dataConsulta;    
     private $motivo;
+    private $fkFuncionario;
+    private $fkPaciente;
     
     function incluir() {
         try {
             $obj = new Conexao();
-
             $sql = "INSERT INTO";
-            $sql .= " consulta (dataConsulta, motivo) ";
-            $sql .= " VALUES('$this->dataConsulta', '$this->motivo') ";
+            $sql .= " consulta (dataConsulta, motivo, fkFuncionario, fkPaciente) ";
+            $sql .= " VALUES('$this->dataConsulta', '$this->motivo', '$this->fkFuncionario', '$this->fkPaciente')";
             echo($sql);
             $obj->set('sql', $sql);
             $obj->query();
@@ -24,10 +24,9 @@ class pConsulta{
 
     function alterar() {
         try {
-            $obj = new Conexao();
-            
+            $obj = new Conexao();            
             $sql = "UPDATE consulta";
-            $sql .= " SET dataConsulta= '$this->dataConsulta', motivo= '$this->motivo'";
+            $sql .= " SET dataConsulta= '$this->dataConsulta', motivo= '$this->motivo', fkFuncionario= '$this->fkFuncionario', fkPaciente= '$this->fkPaciente'";
             $sql .= " WHERE idConsulta = '$this->idConsulta'";
             echo($sql);
             $obj->set('sql', $sql);
@@ -42,14 +41,11 @@ class pConsulta{
     function excluir() {
         try {
             $obj = new Conexao();
-
             $sql = "DELETE FROM consulta";
             $sql .= " WHERE idConsulta = '$this->idConsulta'";
             echo($sql);
             $obj->set('sql', $sql);
-
             $obj->query();
-
             $obj->fechaconexao();
         } catch (Exception $e) {
             echo($e->getMessage());
@@ -58,8 +54,7 @@ class pConsulta{
 
     function consultar() {
         try {
-            $obj = new Conexao();
-            
+            $obj = new Conexao();            
             $consulta = array();
             $sql = "SELECT * ";
             $sql .= " FROM consulta ";
