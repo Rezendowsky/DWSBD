@@ -9,7 +9,6 @@ class pUsuario {
     function incluir() {
         try {
             $obj = new Conexao();
-
             $sql = "INSERT INTO";
             $sql .= " usuario (idUsuario, login, senha) ";
             $sql .= " VALUES('$this->idUsuario','$this->login', '$this->senha') ";
@@ -23,8 +22,7 @@ class pUsuario {
 
     function alterar() {
         try {
-            $obj = new Conexao();
-            
+            $obj = new Conexao();            
             $sql = "UPDATE usuario";
             $sql .= " SET login = '$this->login', senha = '$this->senha'";
             $sql .= " WHERE idUsuario = '$this->idUsuario'";
@@ -41,7 +39,6 @@ class pUsuario {
     function excluir() {
         try {
             $obj = new Conexao();
-
             $sql = "DELETE FROM usuario";
             $sql .= " WHERE idUsuario = '$this->idUsuario'";
             echo($sql);
@@ -57,8 +54,7 @@ class pUsuario {
 
     function consultar() {
         try {
-            $obj = new Conexao();
-            
+            $obj = new Conexao();            
             $pessoa = array();
             $sql = "SELECT * ";
             $sql .= " FROM usuario";
