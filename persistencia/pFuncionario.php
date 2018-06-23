@@ -1,6 +1,6 @@
 <?php
 
-class pFuncionario extends pPessoa {
+class pFuncionario {
     private $idFuncionario;
     private $cargo;
     private $salario;
@@ -9,15 +9,13 @@ class pFuncionario extends pPessoa {
     function incluir() {
         try {
             $obj = new Conexao();
-
             $sql = "INSERT INTO";
             $sql .= " funcionario (cargo, salario, fkPessoa) ";
-            $sql .= " VALUES('$this->cargo', '$this->salario', (SELECT MAX(idPessoa) FROM pessoa)) ";
+            $sql .= " VALUES('$this->cargo', '$this->salario',(SELECT MAX(idPessoa) FROM pessoa))";
             echo($sql);
             $obj->set('sql', $sql);
             $obj->query();
-            $obj->fechaconexao();
-            
+            $obj->fechaconexao();            
         } catch (Exception $e) {
             echo($e->getMessage());
         }
@@ -26,15 +24,12 @@ class pFuncionario extends pPessoa {
     function alterar() {
         try {
             $obj = new Conexao();
-
             $sql = "UPDATE funcionario";
-            $sql .= " SET cargo= '$this->cargo', "
-                    . "salario= '$this->salario', ";
+            $sql .= " SET cargo= '$this->cargo', salario= '$this->salario', fkPessoa= '$this->fkPessoa'";
             $sql .= " WHERE idFuncionario = '$this->idFuncionario'";
             echo($sql);
             $obj->set('sql', $sql);
             $obj->query();
-
             $obj->fechaconexao();
         } catch (Exception $e) {
             echo($e->getMessage());
@@ -44,14 +39,11 @@ class pFuncionario extends pPessoa {
     function excluir() {
         try {
             $obj = new Conexao();
-
             $sql = "DELETE FROM funcionario";
             $sql .= " WHERE idFuncionario = '$this->idFuncionario'";
             echo($sql);
             $obj->set('sql', $sql);
-
             $obj->query();
-
             $obj->fechaconexao();
         } catch (Exception $e) {
             echo($e->getMessage());
@@ -61,7 +53,6 @@ class pFuncionario extends pPessoa {
     function consultar() {
         try {
             $obj = new Conexao();
-
             $funcionario = array();
             $sql = "SELECT * ";
             $sql .= " FROM funcionario ";
@@ -70,11 +61,34 @@ class pFuncionario extends pPessoa {
             $result = $obj->query();
             $i = 0;
             while ($myrow = $result->fetch_assoc()) {
-                $endereco[$i] = $myrow;
+                $funcionario[$i] = $myrow;
                 $i++;
             }
             $obj->fechaconexao();
-            return $endereco;
+            return $funcionario;
+        } catch (Exception $e) {
+            echo($e->getMessage());
+        }
+    }
+
+    function consultarFuncionario() {
+        try {
+            $obj = new Conexao();
+            $funcionario = array();
+            $sql = "SELECT * ";
+            $sql .= " FROM pessoa p INNER JOIN endereco e ON";
+            $sql .= " p.idPessoa = e.fkPessoa INNER JOIN funcionario f ON";
+            $sql .= " p.idPessoa = f.fkPessoa";
+            echo($sql);
+            $obj->set('sql', $sql);
+            $result = $obj->query();
+            $i = 0;
+            while ($myrow = $result->fetch_assoc()) {
+                $funcionario[$i] = $myrow;
+                $i++;
+            }
+            $obj->fechaconexao();
+            return $funcionario;
         } catch (Exception $e) {
             echo($e->getMessage());
         }
@@ -87,5 +101,4 @@ class pFuncionario extends pPessoa {
     function get($prop) {
         return $this->$prop;
     }
-
 }

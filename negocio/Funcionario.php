@@ -1,16 +1,10 @@
 <?php
 
-/**
- * Negocio da classe Funcionario
- *
- * @author Giovani Paganini <giovanipaganini@outlook.com>
- * @author Eduardo Augusto <eduardo.agms@icloud.com>
- */
-class Funcionario extends Pessoa{
-    
+class Funcionario {    
     private $idFuncionario;
     private $cargo;
     private $salario;
+    private $fkPessoa;
 
     public function set($prop, $value) {
         $this->$prop = $value;
@@ -25,6 +19,7 @@ class Funcionario extends Pessoa{
         $objeto->set('idFuncionario', $this->idFuncionario);
         $objeto->set('cargo', $this->cargo);
         $objeto->set('salario', $this->salario);
+        $objeto->set('fkPessoa', $this->fkPessoa);
         $objeto->incluir();
     }
 
@@ -33,6 +28,7 @@ class Funcionario extends Pessoa{
         $objeto->set('idFuncionario', $this->idFuncionario);
         $objeto->set('cargo', $this->cargo);
         $objeto->set('salario', $this->salario);
+        $objeto->set('fkPessoa', $this->fkPessoa);
         $objeto->alterar();
     }
 
@@ -47,6 +43,16 @@ class Funcionario extends Pessoa{
         $objeto->set('idFuncionario', $this->idFuncionario);
         $objeto->set('cargo', $this->cargo);
         $objeto->set('salario', $this->salario);
+        $objeto->set('fkPessoa', $this->fkPessoa);
         return $objeto->consultar();
+    }
+
+    public function consultarFuncionario() {
+        $objeto = new pFuncionario;
+        $objeto->set('idFuncionario', $this->idFuncionario);
+        $objeto->set('cargo', $this->cargo);
+        $objeto->set('salario', $this->salario);
+        $objeto->set('fkPessoa', $this->fkPessoa);        
+        return $objeto->consultarFuncionario();
     }
 }
