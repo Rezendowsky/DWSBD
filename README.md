@@ -7,4 +7,4 @@ Este é um projeto desenvolvido na materia de Desenvolvimento de Sistemas Web co
               Eduardo Augusto
               Giovani Paganini
               
-v1.2.0
+v1.2.1

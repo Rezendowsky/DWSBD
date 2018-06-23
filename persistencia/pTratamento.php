@@ -14,7 +14,7 @@ class Tratamento{
             $sql = "INSERT INTO";
             $sql .= " tratamento (medicacao, sintomas, instrucoes) ";
             $sql .= " VALUES('$this->idTratamento','$this->medicacao', '$this->sintomas', '$this->instrucoes'";
-            
+            echo($sql);
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();
@@ -30,7 +30,7 @@ class Tratamento{
             $sql = "UPDATE tratamento";
             $sql .= " SET medicacao = '$this->medicacao', sintomas = '$this->sintomas', instrucoes = '$this->instrucoes'";
             $sql .= " WHERE idTratamento = '$this->idTratamento'";
-            
+            echo($sql);
             $obj->set('sql', $sql);
             $obj->query();
 
@@ -45,7 +45,7 @@ class Tratamento{
             $obj = new Conexao();
             $sql = "DELETE FROM tratamento";
             $sql .= " WHERE idTratamento = '$this->idTratamento'";
-            
+            echo($sql);
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();
@@ -61,7 +61,7 @@ class Tratamento{
             $tratamento = array();
             $sql = "SELECT * ";
             $sql .= " FROM tratamento";
-            
+            echo($sql);
             $obj->set('sql', $sql);
             $result = $obj->query();
             $i = 0;

@@ -13,7 +13,7 @@ class pConsulta{
             $sql = "INSERT INTO";
             $sql .= " consulta (dataConsulta, motivo) ";
             $sql .= " VALUES('$this->dataConsulta', '$this->motivo') ";
-
+            echo($sql);
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();
@@ -29,7 +29,7 @@ class pConsulta{
             $sql = "UPDATE consulta";
             $sql .= " SET dataConsulta= '$this->dataConsulta', motivo= '$this->motivo'";
             $sql .= " WHERE idConsulta = '$this->idConsulta'";
-
+            echo($sql);
             $obj->set('sql', $sql);
             $obj->query();
 
@@ -45,7 +45,7 @@ class pConsulta{
 
             $sql = "DELETE FROM consulta";
             $sql .= " WHERE idConsulta = '$this->idConsulta'";
-
+            echo($sql);
             $obj->set('sql', $sql);
 
             $obj->query();
@@ -63,6 +63,7 @@ class pConsulta{
             $consulta = array();
             $sql = "SELECT * ";
             $sql .= " FROM consulta ";
+            echo($sql);
             $obj->set('sql', $sql);
             $result = $obj->query();
             $i = 0;

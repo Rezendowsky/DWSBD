@@ -13,7 +13,7 @@ class pFuncionario extends pPessoa {
             $sql = "INSERT INTO";
             $sql .= " funcionario (cargo, salario, fkPessoa) ";
             $sql .= " VALUES('$this->cargo', '$this->salario', (SELECT MAX(idPessoa) FROM pessoa)) ";
-
+            echo($sql);
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();
@@ -31,7 +31,7 @@ class pFuncionario extends pPessoa {
             $sql .= " SET cargo= '$this->cargo', "
                     . "salario= '$this->salario', ";
             $sql .= " WHERE idFuncionario = '$this->idFuncionario'";
-
+            echo($sql);
             $obj->set('sql', $sql);
             $obj->query();
 
@@ -47,7 +47,7 @@ class pFuncionario extends pPessoa {
 
             $sql = "DELETE FROM funcionario";
             $sql .= " WHERE idFuncionario = '$this->idFuncionario'";
-
+            echo($sql);
             $obj->set('sql', $sql);
 
             $obj->query();
@@ -65,7 +65,7 @@ class pFuncionario extends pPessoa {
             $funcionario = array();
             $sql = "SELECT * ";
             $sql .= " FROM funcionario ";
-            
+            echo($sql);
             $obj->set('sql', $sql);
             $result = $obj->query();
             $i = 0;

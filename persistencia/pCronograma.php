@@ -14,7 +14,7 @@ class pCronograma{
             $sql = "INSERT INTO";
             $sql .= " cronograma (inicioHora, terminoHora, data) ";
             $sql .= " VALUES('$this->inicioHora', '$this->terminoHora', '$this->data') ";
-
+            echo($sql);
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();
@@ -31,7 +31,7 @@ class pCronograma{
             $sql = "UPDATE cronograma";
             $sql .= " SET inicioHora= '$this->inicioHora', terminoHora= '$this->terminoHora', data= '$this->data'";
             $sql .= " WHERE idCronograma = '$this->idCronograma'";
-
+            echo($sql);
             $obj->set('sql', $sql);
             $obj->query();
 
@@ -47,7 +47,7 @@ class pCronograma{
 
             $sql = "DELETE FROM cronograma";
             $sql .= " WHERE idCronograma = '$this->idCronograma'";
-
+            echo($sql);
             $obj->set('sql', $sql);
 
             $obj->query();
@@ -65,6 +65,7 @@ class pCronograma{
             $cronograma = array();
             $sql = "SELECT * ";
             $sql .= " FROM cronograma ";
+            echo($sql);
             $obj->set('sql', $sql);
             $result = $obj->query();
             $i = 0;
