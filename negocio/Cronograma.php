@@ -6,6 +6,8 @@ class Cronograma{
     private $inicioHora;
     private $terminoHora;
     private $data;
+    private $fkFuncionario;
+    private $fkPaciente; 
     
     public function set($prop, $value) {
         $this->$prop = $value;
@@ -21,6 +23,8 @@ class Cronograma{
         $objeto->set('inicioHora', $this->inicioHora);
         $objeto->set('terminoHora', $this->terminoHora);
         $objeto->set('data', $this->data);
+        $objeto->set('fkFuncionario', $this->fkFuncionario);
+        $objeto->set('fkPaciente', $this->fkPaciente);
         $objeto->incluir();
     }
 
@@ -30,6 +34,8 @@ class Cronograma{
         $objeto->set('inicioHora', $this->inicioHora);
         $objeto->set('terminoHora', $this->terminoHora);
         $objeto->set('data', $this->data);
+        $objeto->set('fkFuncionario', $this->fkFuncionario);
+        $objeto->set('fkPaciente', $this->fkPaciente);
         $objeto->alterar();
     }
 
@@ -45,8 +51,19 @@ class Cronograma{
         $objeto->set('inicioHora', $this->inicioHora);
         $objeto->set('terminoHora', $this->terminoHora);
         $objeto->set('data', $this->data);
+        $objeto->set('fkFuncionario', $this->fkFuncionario);
+        $objeto->set('fkPaciente', $this->fkPaciente);
         return $objeto->consultar();
     }
 
-    
+    public function consultarCronograma() {
+        $objeto = new pAluno;
+        $objeto->set('idCronograma', $this->idCronograma);
+        $objeto->set('inicioHora', $this->inicioHora);
+        $objeto->set('terminoHora', $this->terminoHora);
+        $objeto->set('data', $this->data);
+        $objeto->set('fkFuncionario', $this->fkFuncionario);
+        $objeto->set('fkPaciente', $this->fkPaciente);
+        return $objeto->consultarCronograma();
+    }
 }
