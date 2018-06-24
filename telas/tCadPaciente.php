@@ -96,6 +96,10 @@ if (!empty($_POST)) {
 </head>
 
 <body>
+		<header>
+            <a href="tMenuPrincipal.php">Home</a>
+            <a href="#">Bem vindo, <?php //echo($usuario->get('login')); ?></a>
+        </header>
 	<div id="sessao">
 		<form name="frmCad" method="post"
 		action="<?php echo $_SERVER['PHP_SELF']; ?>">
@@ -248,5 +252,8 @@ if (!empty($_POST)) {
 			</table>
 		</form>
 	</div>
+	<footer>
+            <p>Desenvolvido precariamente por: Eduardo, Giovani e Lucas - Copyright &copy Arenvges Dev Group 2018</p>
+        </footer>
 </body>
 </html>

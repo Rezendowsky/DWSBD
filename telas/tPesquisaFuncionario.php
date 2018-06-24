@@ -114,7 +114,7 @@
                 <input class="hidden" name="txtValor" value="pesquisar">
                 <table class="tableForm">                
                     <tr class="tableHeader">
-                        <th class="tdHeader" colspan="2">Pesquisar Paciente</th>
+                        <th class="tdHeader" colspan="2">Pesquisar Funcionario</th>
                     </tr>
                     <tr>                                            
                         <td colspan="2">Nome: <input type="text" name="txtNome" required/></td>                                                
@@ -135,10 +135,9 @@
                         <td>Nascimento</td>
                         <td>Telefone</td>
                         <td>Sexo</td>
-                        <td class="hidden">idPaciente</td>
-                        <td>Peso</td>
-                        <td>Altura</td>
-                        <td>TipoSanguineo</td>                    
+                        <td class="hidden">idFuncionario</td>
+                        <td>Cargo</td>
+                        <td>Salario</td>                        
                         <td>&emsp;</td>
                         <td>&emsp;</td>                        
                     </tr>

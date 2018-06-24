@@ -14,7 +14,7 @@ class HistoricoMedico{
             $sql = "INSERT INTO";
             $sql .= " historicoMEdico (idHistoricoMedico, medicoAnterior, historico, fkPaciente) ";
             $sql .= " VALUES('$this->idHistoricoMedico','$this->medicoAnterior', '$this->historico', (SELECT MAX(idPaciente) FROM paciente)) ";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();
@@ -32,7 +32,7 @@ class HistoricoMedico{
             $sql .= " SET medicoAnterior= '$this->medicoAnterior', "
                     . "historico= '$this->historico', ";
             $sql .= " WHERE idHistoricoMedico = '$this->idHistoricoMedico'";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $obj->query();
 
@@ -48,7 +48,7 @@ class HistoricoMedico{
 
             $sql = "DELETE FROM historicoMedico";
             $sql .= " WHERE idHistoricoMedico = '$this->idHistoricoMedico'";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
 
             $obj->query();
@@ -66,7 +66,7 @@ class HistoricoMedico{
             $historico = array();
             $sql = "SELECT * ";
             $sql .= " FROM historico ";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $result = $obj->query();
             $i = 0;

@@ -12,7 +12,7 @@ class pFuncionario {
             $sql = "INSERT INTO";
             $sql .= " funcionario (cargo, salario, fkPessoa) ";
             $sql .= " VALUES('$this->cargo', '$this->salario',(SELECT MAX(idPessoa) FROM pessoa))";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();            
@@ -27,7 +27,7 @@ class pFuncionario {
             $sql = "UPDATE funcionario";
             $sql .= " SET cargo= '$this->cargo', salario= '$this->salario', fkPessoa= '$this->fkPessoa'";
             $sql .= " WHERE idFuncionario = '$this->idFuncionario'";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();
@@ -41,7 +41,7 @@ class pFuncionario {
             $obj = new Conexao();
             $sql = "DELETE FROM funcionario";
             $sql .= " WHERE idFuncionario = '$this->idFuncionario'";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();
@@ -56,7 +56,7 @@ class pFuncionario {
             $funcionario = array();
             $sql = "SELECT * ";
             $sql .= " FROM funcionario ";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $result = $obj->query();
             $i = 0;
@@ -79,7 +79,7 @@ class pFuncionario {
             $sql .= " FROM pessoa p INNER JOIN endereco e ON";
             $sql .= " p.idPessoa = e.fkPessoa INNER JOIN funcionario f ON";
             $sql .= " p.idPessoa = f.fkPessoa";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $result = $obj->query();
             $i = 0;

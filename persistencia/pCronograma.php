@@ -14,7 +14,7 @@ class pCronograma {
             $sql = "INSERT INTO";
             $sql .= " cronograma (inicioHora, terminoHora, data, fkFuncionario, fkPaciente)";
             $sql .= " VALUES('$this->idCronograma', '$this->inicioHora', '$this->terminoHora', '$this->data', '$this->fkFuncionario', '$this->fkPaciente')";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();            
@@ -29,7 +29,7 @@ class pCronograma {
             $sql = "UPDATE cronograma";
             $sql .= " SET inicioHora= '$this->inicioHora', terminoHora= '$this->terminoHora', data= '$this->data', fkFuncionario= '$this->fkFuncionario', fkPaciente= '$this->fkPaciente'";
             $sql .= " WHERE idCronograma = '$this->idCronograma'";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $obj->query();
 
@@ -44,7 +44,7 @@ class pCronograma {
             $obj = new Conexao();
             $sql = "DELETE FROM cronograma";
             $sql .= " WHERE idCronograma = '$this->idCronograma'";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();
@@ -59,7 +59,7 @@ class pCronograma {
             $cronograma = array();
             $sql = "SELECT * ";
             $sql .= " FROM cronograma ";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $result = $obj->query();
             $i = 0;
@@ -80,7 +80,7 @@ class pCronograma {
             $cronograma = array();
             $sql = "SELECT * ";
             $sql .= " FROM cronograma ";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $result = $obj->query();
             $i = 0;

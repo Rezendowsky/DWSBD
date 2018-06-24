@@ -14,7 +14,7 @@ class pPaciente {
             $sql = "INSERT INTO";
             $sql .= " paciente (peso, altura, tipoSanguineo, fkPessoa) ";
             $sql .= " VALUES('$this->peso', '$this->altura', '$this->tipoSanguineo',(SELECT MAX(idPessoa) FROM pessoa)) ";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();
@@ -28,9 +28,9 @@ class pPaciente {
         try {
             $obj = new Conexao();            
             $sql = "UPDATE paciente";
-            $sql .= " SET peso= '$this->peso', altura= '$this->altura', tipoSanguineo= '$this->tipoSanguineo', fkPessoa= '$this->fkPessoa'";            echo($sql);
+            $sql .= " SET peso= '$this->peso', altura= '$this->altura', tipoSanguineo= '$this->tipoSanguineo', fkPessoa= '$this->fkPessoa'";            echo("<p class=\"hidden\">" . $sql . "</p>");
             $sql .= " WHERE idPaciente = '$this->idPaciente'";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $obj->query();
 
@@ -45,7 +45,7 @@ class pPaciente {
             $obj = new Conexao();
             $sql = "DELETE FROM paciente";
             $sql .= " WHERE idPaciente = '$this->idPaciente'";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();
@@ -60,7 +60,7 @@ class pPaciente {
             $paciente = array();
             $sql = "SELECT * ";
             $sql .= " FROM paciente ";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $result = $obj->query();
             $i = 0;
@@ -82,7 +82,7 @@ class pPaciente {
             $sql = "SELECT * ";
             $sql .= " FROM pessoa p INNER JOIN endereco e ON"; 
             $sql .= " p.idPessoa = e.fkPessoa INNER JOIN paciente pa ON p.idPessoa = pa.fkPessoa";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $result = $obj->query();
             $i = 0;

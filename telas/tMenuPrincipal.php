@@ -24,8 +24,7 @@ session_start();
             <table class="tableForm">  
                 <tbody id="telaMenu">                    
                     <tr class="tableHeader">
-                        <th class="tdHeader" colspan="2">Menu Principal</th>
-                        <td>Bem vindo, <?php echo($usuario->get('login'));?> </td>
+                        <th class="tdHeader" colspan="2">Menu Principal</th>    
                     </tr>                    
                     <tr>
                         <td colspan=""><input class="btn btnMenu btnMenuNeutro" type="button" 

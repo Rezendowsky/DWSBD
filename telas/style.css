@@ -92,7 +92,7 @@ table {
 }
 
 
-input[type=text] {
+input[type=text], input[type=password], input[type=date] {
     border-radius: 5px;
     border: 1px solid #ddd;
     padding: 5px 0;
@@ -212,6 +212,20 @@ footer {
     text-align: center;
 }
 
-/* .hidden {
+.container {
+    padding: 16px;
+}
+
+.logo {
+    max-width: 300px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#login {
+    text-align: left;
+}
+
+.hidden {
     display: none !important;
-} */
+}

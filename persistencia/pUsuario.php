@@ -28,7 +28,7 @@ class pUsuario {
             $sql = "UPDATE usuario";
             $sql .= " SET nome= '$this->nome', email= '$this->email', login= '$this->login', senha= '$this->senha'";
             $sql .= " WHERE idUsuario= '$this->idUsuario'";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $obj->query();
 
@@ -43,7 +43,7 @@ class pUsuario {
             $obj = new Conexao();
             $sql = "DELETE FROM usuario";
             $sql .= " WHERE idUsuario = '$this->idUsuario'";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
 
             $obj->query();
@@ -60,7 +60,7 @@ class pUsuario {
             $pessoa = array();
             $sql = "SELECT * ";
             $sql .= " FROM usuario";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $result = $obj->query();
             $i = 0;

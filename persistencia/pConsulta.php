@@ -13,7 +13,7 @@ class pConsulta{
             $sql = "INSERT INTO";
             $sql .= " consulta (dataConsulta, motivo, fkFuncionario, fkPaciente) ";
             $sql .= " VALUES('$this->dataConsulta', '$this->motivo', '$this->fkFuncionario', '$this->fkPaciente')";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();
@@ -28,7 +28,7 @@ class pConsulta{
             $sql = "UPDATE consulta";
             $sql .= " SET dataConsulta= '$this->dataConsulta', motivo= '$this->motivo', fkFuncionario= '$this->fkFuncionario', fkPaciente= '$this->fkPaciente'";
             $sql .= " WHERE idConsulta = '$this->idConsulta'";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $obj->query();
 
@@ -43,7 +43,7 @@ class pConsulta{
             $obj = new Conexao();
             $sql = "DELETE FROM consulta";
             $sql .= " WHERE idConsulta = '$this->idConsulta'";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();
@@ -58,7 +58,7 @@ class pConsulta{
             $consulta = array();
             $sql = "SELECT * ";
             $sql .= " FROM consulta ";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $result = $obj->query();
             $i = 0;

@@ -32,16 +32,20 @@ if (!empty($_POST)) {
 <HTML>
     <HEAD>
         <TITLE>Tela de Login</TITLE>
-        <link href="estilo.css" rel="stylesheet" type="text/css">
+        <link href="style.css" rel="stylesheet" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
     </HEAD>
     <BODY>
-        <div id="conteiner" style="height: 100%;" align="center">
+        <header>
+            <a href="tMenuPrincipal.php">Home</a>
+            <a href="#"><?php //echo($usuario->get('nome')); ?></a>
+        </header>
+        <div id="sessao" style="height: 100%;" align="center">
             <form name="frmLogin" method="post"
                   action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                <div style="margin-top: 200px; width:302; height:127; background-image: url(imagens/login.jpg); background-repeat: no-repeat;" align="left">
+                <div id="login">
                     <div id="linha1" class="textoLogin">
-                        <label>SmartMED </label>
+                        <img class="logo" src="../imagens/logo.png">                                               
                     </div>
                     <div id="linha2" class="textoLogin">
                         <label>Login: </label> <input class="caixatexto" name="txtLogin" type="text" id="txtLogin" size="20">
@@ -50,8 +54,8 @@ if (!empty($_POST)) {
                         <label>Senha: </label> <input class="caixatexto" name="txtSenha" type="password" id="txtSenha" size="20">
                     </div>
                     <div id="linha4" align="center">
-                        <input class="botao" name="btnEntrar" type="submit" id="btEntrar" value="Entrar">
-                        <input class="botao" name="btnLimpar" type="reset" value="Limpar" ID="btnLimpar">
+                        <input class="btn btnGravar" name="btnEntrar" type="submit" id="btEntrar" value="Entrar">
+                        <input class="btn btnEditar" name="btnLimpar" type="reset" value="Limpar" ID="btnLimpar">
                     </div>
                     <div id="linha5" align="center">
                         <br><label id="txterro" class="alerta"><?php echo($erro) ?></label>
@@ -59,5 +63,8 @@ if (!empty($_POST)) {
                 </div>
             </form>
         </div>
+        <footer>
+            <p>Desenvolvido precariamente por: Eduardo, Giovani e Lucas - Copyright &copy Arenvges Dev Group 2018</p>
+        </footer>
     </BODY>
 </HTML>

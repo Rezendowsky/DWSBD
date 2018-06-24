@@ -28,16 +28,27 @@ session_start();
                     </tr>
                     <tr>
                         <td><input class="btn btnMenu btnMenuNeutro" type="button" 
-                            onclick="location.href='tPesquisaPaciente.php'" value="Pesquisar Paciente" name="btnMenu"/></td>
-                        <td><input class="btn btn btnMenu btnMenuPositivo" type="button" value="Registrar Paciente" name="btnMenu"/></td>
+                            onclick="location.href='tPesquisaPaciente.php'" value="Pesquisar Paciente" name="btnMenu"/>
+                        </td>
+                        <td><input class="btn btn btnMenu btnMenuPositivo" type="button" 
+                            onclick="location.href='tCadPaciente.php'" value="Registrar Paciente" name="btnMenu"/>
+                        </td>
                     </tr>
                     <tr>
-                        <td><input class="btn btnMenu btnMenuNeutro" type="submit" value="Pesquisar Funcionário" name="btnMenu"/></td>
-                        <td><input class="btn btnMenu btnMenuPositivo" type="submit" value="Registrar Funcionario" name="btnMenu"/></td>
+                        <td><input class="btn btnMenu btnMenuNeutro" type="button" 
+                            onclick="location.href='tPesquisaFuncionario.php'" value="Pesquisar Funcionário" name="btnMenu"/>
+                        </td>
+                        <td><input class="btn btnMenu btnMenuPositivo" type="button" 
+                            onclick="location.href='tCadFuncionario.php'" value="Registrar Funcionario" name="btnMenu"/>
+                        </td>
                     </tr>
                     <tr>
-                        <td><input class="btn btnMenu btnMenuNeutro" type="submit" value="Agendamentos" name="btnMenu"/></td>
-                        <td><input class="btn btnMenu btnMenuNeutro" type="submit" value="Tratamentos" name="btnMenu"/></td>
+                        <td><input class="btn btnMenu btnMenuNeutro" type="button" 
+                            onclick="location.href='tAgendamentos.php'" value="Agendamentos" name="btnMenu"/>
+                        </td>
+                        <td><input class="btn btnMenu btnMenuNeutro" type="button" 
+                            onclick="location.href='tTratamentos.php'" value="Tratamentos" name="btnMenu"/>
+                        </td>
                     </tr>
                 </tbody>
             </table>            

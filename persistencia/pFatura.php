@@ -13,7 +13,7 @@ class Fatura{
             $sql = "INSERT INTO";
             $sql .= " fatura (dataFatura, valor) ";
             $sql .= " VALUES('$this->dataFatura', '$this->valor') ";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();
@@ -29,7 +29,7 @@ class Fatura{
             $sql = "UPDATE fatura";
             $sql .= " SET dataFatura= '$this->dataFatura', valor= '$this->valor'";
             $sql .= " WHERE idFatura = '$this->idFatura'";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $obj->query();
 
@@ -45,7 +45,7 @@ class Fatura{
 
             $sql = "DELETE FROM fatura";
             $sql .= " WHERE idFatura = '$this->idFatura'";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
 
             $obj->query();
@@ -63,7 +63,7 @@ class Fatura{
             $fatura = array();
             $sql = "SELECT * ";
             $sql .= " FROM fatura ";
-            echo($sql);
+            echo("<p class=\"hidden\">" . $sql . "</p>");
             $obj->set('sql', $sql);
             $result = $obj->query();
             $i = 0;
