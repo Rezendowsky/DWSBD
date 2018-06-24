@@ -46,7 +46,7 @@ class Cronograma{
     }
 
     public function consultar() {
-        $objeto = new pAluno;
+        $objeto = new pCronograma;
         $objeto->set('idCronograma', $this->idCronograma);
         $objeto->set('inicioHora', $this->inicioHora);
         $objeto->set('terminoHora', $this->terminoHora);
@@ -57,7 +57,7 @@ class Cronograma{
     }
 
     public function consultarCronograma() {
-        $objeto = new pAluno;
+        $objeto = new pCronograma;
         $objeto->set('idCronograma', $this->idCronograma);
         $objeto->set('inicioHora', $this->inicioHora);
         $objeto->set('terminoHora', $this->terminoHora);

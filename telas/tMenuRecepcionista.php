@@ -44,7 +44,7 @@ session_start();
                     </tr>
                     <tr>
                         <td><input class="btn btnMenu btnMenuNeutro" type="button" 
-                            onclick="location.href='tAgendamentos.php'" value="Agendamentos" name="btnMenu"/>
+                            onclick="location.href='tAgendamentoNovo.php'" value="Agendamentos" name="btnMenu"/>
                         </td>
                         <td><input class="btn btnMenu btnMenuNeutro" type="button" 
                             onclick="location.href='tTratamentos.php'" value="Tratamentos" name="btnMenu"/>
