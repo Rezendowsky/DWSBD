@@ -1,6 +1,7 @@
 <?php
 ini_set("display_errors", 1);
 include_once '../persistencia/pUsuario.php';
+include_once '../negocio/Usuario.php';
 session_start();
 ?>
 <HTML>
@@ -10,10 +11,10 @@ session_start();
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
     </HEAD>
     <?php
-    // If (strpos($_SERVER["HTTP_REFERER"], "index.php")): {
-    //         $usuario = $_SESSION["usuario"];
-    //     }
-    // ?>
+    if (strpos($_SERVER["HTTP_REFERER"], "tUsuario.php")): {
+            $usuario = $_SESSION["usuario"];
+        }
+    ?>
         <body leftMargin="0" topMargin="0" scroll="no" marginheight="0" marginwidth="0">
             <table border=1 width="880" height="100%">
                 <tr>
@@ -75,5 +76,5 @@ session_start();
                 </tr>
             </table>
         </body>
-    
+    <?php endif; ?>
 </HTML>

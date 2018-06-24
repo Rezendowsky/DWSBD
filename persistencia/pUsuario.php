@@ -3,15 +3,17 @@
 
 class pUsuario {
     private $idUsuario;
+    private $nome = "";
+    private $email = "";
     private $login = "";
-    private $senha = "";
+    private $senha = "";    
 
     function incluir() {
         try {
             $obj = new Conexao();
             $sql = "INSERT INTO";
-            $sql .= " usuario (idUsuario, login, senha) ";
-            $sql .= " VALUES('$this->idUsuario','$this->login', '$this->senha') ";
+            $sql .= " usuario (idUsuario, nome, email, login, senha) ";
+            $sql .= " VALUES('$this->idUsuario','$this->nome','$this->email','$this->login', '$this->senha') ";
             $obj->set('sql', $sql);
             $obj->query();
             $obj->fechaconexao();
@@ -24,8 +26,8 @@ class pUsuario {
         try {
             $obj = new Conexao();            
             $sql = "UPDATE usuario";
-            $sql .= " SET login = '$this->login', senha = '$this->senha'";
-            $sql .= " WHERE idUsuario = '$this->idUsuario'";
+            $sql .= " SET nome= '$this->nome', email= '$this->email', login= '$this->login', senha= '$this->senha'";
+            $sql .= " WHERE idUsuario= '$this->idUsuario'";
             echo($sql);
             $obj->set('sql', $sql);
             $obj->query();
@@ -68,6 +70,27 @@ class pUsuario {
             }
             $obj->fechaconexao();
             return $pessoa;
+        } catch (Exception $e) {
+            echo($e->getMessage());
+        }
+    }
+
+    function validaLogin(){
+        try {
+            $obj = new Conexao();
+
+            $usuario=false;
+            $sql = "SELECT login, senha ";
+            $sql .= " FROM usuario ";
+            $sql .= " WHERE login = '$this->login' and senha = '$this->senha' ";
+            $obj->set('sql', $sql);
+
+            $result = $obj->query();
+            while ($myrow = $result->fetch_assoc()) {
+                $usuario= true;
+            }
+            $obj->fechaconexao();
+            return $usuario;
         } catch (Exception $e) {
             echo($e->getMessage());
         }

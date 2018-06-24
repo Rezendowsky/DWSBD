@@ -1,16 +1,25 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
+<?php
+ini_set("display_errors", 1);
+include_once '../persistencia/pUsuario.php';
+include_once '../negocio/Usuario.php';
+session_start();
+?>
+<!DOCTYPE HTML>
     <head>
         <meta charset="UTF-8">
         <link href="style.css" rel="stylesheet" type="text/css"/>
         <title>Recepcionista</title>
     </head>
+    <?php
+    // if (strpos($_SERVER["HTTP_REFERER"], "tUsuario.php")): {
+    //         $usuario = $_SESSION["usuario"];
+    //     }
+    ?>
     <body>
+        <header>
+            <a href="tMenuPrincipal.php">Home</a>
+            <a href="#"><?php //echo($usuario->get('nome')); ?></a>
+        </header>
         <div id="sessao">
             <table class="tableForm">  
                 <tbody id="telaMenu">
@@ -32,9 +41,10 @@ and open the template in the editor.
                     </tr>
                 </tbody>
             </table>            
-        </div>        
-        <?php
-        // put your code here
-        ?>
+        </div> 
+        <footer>
+            <p>Desenvolvido precariamente por: Eduardo, Giovani e Lucas - Copyright &copy Arenvges Dev Group 2018</p>
+        </footer>
     </body>
+    <?php //endif; ?>
 </html>

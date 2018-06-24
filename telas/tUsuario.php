@@ -21,7 +21,7 @@ if (!empty($_POST)) {
         session_start();
         $_SESSION["usuario"] = $objeto;
         //Redireciona para outra p�gina
-        header("Location: ../telas/tPainel.php");
+        header("Location: ../telas/tMenuPrincipal.php");
     } else {
         //Emite uma mensagem
         $erro = "Desculpe, nenhum registro encontrado!";

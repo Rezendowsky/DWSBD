@@ -18,6 +18,29 @@ body {
     background: #eee;
 }
 
+header {
+    background-color: #333;
+    overflow: hidden;  
+    position: absolute;  
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+header a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 12pt;
+}
+
+header a:hover {
+    background-color: green;
+    color: white;
+}
+
 table {
     width: 1024px;
     box-shadow: 2px 1px 5px #ccc;
@@ -59,6 +82,15 @@ table {
     padding: 2px;
 }
 
+.tableFooter{
+    background-color: lightgrey;
+    color: grey;    
+    border: 1px solid darkgreen;    
+    text-align: center;
+    padding: 2px;
+    font-size: 10pt;
+}
+
 
 input[type=text] {
     border-radius: 5px;
@@ -77,6 +109,7 @@ input[type=textarea] {
 
 #sessao {
     margin: auto;
+    margin-top: 50px;
     max-width: 1024px;
 }
 
@@ -167,6 +200,16 @@ input[type=textarea] {
     background-color: orange;
     color: white;
     border-color: darkorange;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: lightgrey;
+    color: grey;
+    text-align: center;
 }
 
 /* .hidden {

@@ -14,8 +14,10 @@
 class Usuario {
     
     private $idUsuario;
+    private $nome;
+    private $email;
     private $login;
-    private $senha;
+    private $senha;    
     
     public function set($prop, $value) {
         $this->$prop = $value;
@@ -28,6 +30,8 @@ class Usuario {
      public function incluir() {
         $objeto = new pUsuario;
         $objeto->set('idUsuario', $this->idUsuario);
+        $objeto->set('nome', $this->nome);
+        $objeto->set('email', $this->email);
         $objeto->set('login', $this->login);
         $objeto->set('senha', $this->senha);
         $objeto->incluir();
@@ -36,6 +40,8 @@ class Usuario {
     public function alterar() {
         $objeto = new pUsuario;
         $objeto->set('idUsuario', $this->idUsuario);
+        $objeto->set('nome', $this->nome);
+        $objeto->set('email', $this->email);
         $objeto->set('login', $this->login);
         $objeto->set('senha', $this->senha);
         $objeto->alterar();
@@ -50,8 +56,17 @@ class Usuario {
     public function consultar() {
         $objeto = new pUsuario;
         $objeto->set('idUsuario', $this->idUsuario);
+        $objeto->set('nome', $this->nome);
+        $objeto->set('email', $this->email);
         $objeto->set('login', $this->login);
         $objeto->set('senha', $this->senha);
         return $objeto->consultar();
+    }
+
+    public function validalogin(){
+        $objeto = new pUsuario();
+        $objeto->set('login', $this->login);
+        $objeto->set('senha', $this->senha);
+        return $objeto->validaLogin();
     }
 }
