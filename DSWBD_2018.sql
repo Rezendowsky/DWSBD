@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 17-Jun-2018 às 20:20
--- Versão do servidor: 10.1.31-MariaDB
--- PHP Version: 7.2.4
+-- Host: localhost
+-- Generation Time: Jun 26, 2018 at 01:10 AM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,91 +19,104 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dswbd_2018`
+-- Database: `DSWBD_2018`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `consulta`
+-- Table structure for table `consulta`
 --
 
 CREATE TABLE `consulta` (
   `idConsulta` int(11) NOT NULL,
-  `dataConsulta` date DEFAULT NULL,
-  `motivo` varchar(255) DEFAULT NULL,
-  `fkCronograma` int(11) NOT NULL
+  `dataConsulta` date NOT NULL,
+  `motivo` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `fkCronograma` int(11) NOT NULL,
+  `fkFuncionario` int(11) NOT NULL,
+  `fkPaciente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cronograma`
+-- Table structure for table `cronograma`
 --
 
 CREATE TABLE `cronograma` (
   `idCronograma` int(11) NOT NULL,
-  `inicioHora` datetime DEFAULT NULL,
-  `terminoHora` datetime DEFAULT NULL,
-  `data` date DEFAULT NULL
+  `inicioHora` datetime NOT NULL,
+  `terminoHora` datetime NOT NULL,
+  `data` date NOT NULL,
+  `fkFuncionario` int(11) NOT NULL,
+  `fkPaciente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `endereco`
+-- Table structure for table `endereco`
 --
 
 CREATE TABLE `endereco` (
   `idEndereco` int(11) NOT NULL,
-  `logradouro` varchar(255) DEFAULT NULL,
-  `numero` char(10) DEFAULT NULL,
-  `bairro` varchar(255) DEFAULT NULL,
-  `cidade` varchar(255) DEFAULT NULL,
-  `estado` char(2) DEFAULT NULL,
-  `cep` char(10) DEFAULT NULL,
+  `logradouro` varchar(255) NOT NULL,
+  `numero` char(10) NOT NULL,
+  `bairro` varchar(255) NOT NULL,
+  `cidade` varchar(255) NOT NULL,
+  `estado` char(2) NOT NULL,
+  `cep` char(10) NOT NULL,
   `fkPessoa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `endereco`
+-- Dumping data for table `endereco`
 --
 
 INSERT INTO `endereco` (`idEndereco`, `logradouro`, `numero`, `bairro`, `cidade`, `estado`, `cep`, `fkPessoa`) VALUES
-(3, 'av genoveva rezende carneiro', '70', 'vila bela', 'morrinhos', 'go', '75650000', 3);
+(1, 'av genoveva rezende carneiro', '70', 'vila bela', 'morrinhos', 'go', '75650000', 2),
+(2, 'av seu cuca', '70', 'vila bela', 'morrinhos', 'go', '23456789', 4),
+(3, 'Rua', '66613', 'Bairro', 'Morrinhos', 'GO', '666666666', 5),
+(5, 'asdasdasd', '0000', 'teste', 'teste', 'CU', 'teste', 8);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `funcionario`
+-- Table structure for table `funcionario`
 --
 
 CREATE TABLE `funcionario` (
   `idFuncionario` int(11) NOT NULL,
-  `cargo` varchar(45) NOT NULL,
-  `salario` varchar(45) NOT NULL,
-  `fkPessoa` int(11) NOT NULL,
-  `fkEndereco` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `paciente`
---
-
-CREATE TABLE `paciente` (
-  `idPaciente` int(11) NOT NULL,
-  `peso` decimal(10,0) DEFAULT NULL,
-  `altura` decimal(10,0) DEFAULT NULL,
-  `tipoSanguineo` char(2) DEFAULT NULL,
+  `cargo` varchar(255) NOT NULL,
+  `salario` decimal(10,2) NOT NULL,
   `fkPessoa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `pessoa`
+-- Table structure for table `paciente`
+--
+
+CREATE TABLE `paciente` (
+  `idPaciente` int(11) NOT NULL,
+  `peso` decimal(10,2) NOT NULL,
+  `altura` decimal(10,2) NOT NULL,
+  `tipoSanguineo` char(2) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `fkPessoa` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `paciente`
+--
+
+INSERT INTO `paciente` (`idPaciente`, `peso`, `altura`, `tipoSanguineo`, `fkPessoa`) VALUES
+(1, '64.00', '1.75', 'O+', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pessoa`
 --
 
 CREATE TABLE `pessoa` (
@@ -116,24 +129,37 @@ CREATE TABLE `pessoa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `pessoa`
+-- Dumping data for table `pessoa`
 --
 
 INSERT INTO `pessoa` (`idPessoa`, `nome`, `cpf`, `sexo`, `nascimento`, `telefone`) VALUES
-(3, 'Giovani', '09154321964', 'M', '1995-05-16', '981036694'),
-(4, 'Giovani', '65373342769', 'M', '1995-05-16', '981036694'),
-(5, 'Giovani', '93494465703', 'M', '1995-05-16', '981036694'),
-(6, 'Giovani', '34522224206', 'M', '1995-05-16', '981036694'),
-(7, 'Giovani', '42210053510', 'M', '1995-05-16', '981036694'),
-(8, 'teste', '1235677', 'M', '0000-00-00', 'teste'),
-(9, 'teste', '12345678', 'M', '0000-00-00', 'teste'),
-(10, 'Giovani', '31909214230', 'M', '1995-05-16', '981036694'),
-(13, 'giovani', '78419543012', 'M', '1995-05-16', '12345678'),
-(14, 'giovani', '44788031884', 'M', '1995-05-16', '12345678'),
-(15, 'giovani', '31420649825', 'M', '1995-05-16', '12345678'),
-(17, 'giovani', '12025784201', 'M', '1995-05-16', '12345678'),
-(18, 'giovani', '71642584657', 'M', '1995-05-16', '12345678'),
-(19, 'giovani', '81662343787', 'M', '1995-05-16', '12345678');
+(1, '', '', 'M', '0000-00-00', ''),
+(2, 'GIOVANI', '32480634167', 'M', '1995-05-16', '981036694'),
+(3, 'ronaldo', '12345678999', 'M', '2018-06-15', '88888888888'),
+(4, 'giovani', '09154321962', 'M', '1995-05-16', '234567890'),
+(5, 'Giovani Paganini', '1', 'M', '1995-05-16', '12345678'),
+(8, 'JOAO', 'teste', 'M', '2018-06-23', '12345678');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `idUsuario` int(11) NOT NULL,
+  `login` varchar(45) NOT NULL,
+  `senha` varchar(45) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `usuario`
+--
+
+INSERT INTO `usuario` (`idUsuario`, `login`, `senha`, `nome`, `email`) VALUES
+(1, 'teste', '1234', 'giovani', 'giovani@email.com');
 
 --
 -- Indexes for dumped tables
@@ -143,13 +169,17 @@ INSERT INTO `pessoa` (`idPessoa`, `nome`, `cpf`, `sexo`, `nascimento`, `telefone
 -- Indexes for table `consulta`
 --
 ALTER TABLE `consulta`
-  ADD PRIMARY KEY (`idConsulta`);
+  ADD PRIMARY KEY (`idConsulta`),
+  ADD KEY `fkConsultaFuncionario` (`fkFuncionario`),
+  ADD KEY `fkConsultaPaciente` (`fkPaciente`);
 
 --
 -- Indexes for table `cronograma`
 --
 ALTER TABLE `cronograma`
-  ADD PRIMARY KEY (`idCronograma`);
+  ADD PRIMARY KEY (`idCronograma`),
+  ADD KEY `fkCronogramaFuncionario` (`fkFuncionario`),
+  ADD KEY `fkCronogramaPaciente` (`fkPaciente`);
 
 --
 -- Indexes for table `endereco`
@@ -180,6 +210,12 @@ ALTER TABLE `pessoa`
   ADD UNIQUE KEY `cpf` (`cpf`);
 
 --
+-- Indexes for table `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`idUsuario`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -199,7 +235,7 @@ ALTER TABLE `cronograma`
 -- AUTO_INCREMENT for table `endereco`
 --
 ALTER TABLE `endereco`
-  MODIFY `idEndereco` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idEndereco` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `funcionario`
@@ -211,35 +247,55 @@ ALTER TABLE `funcionario`
 -- AUTO_INCREMENT for table `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `idPaciente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idPaciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Limitadores para a tabela `endereco`
+-- Constraints for table `consulta`
+--
+ALTER TABLE `consulta`
+  ADD CONSTRAINT `fkConsultaFuncionario` FOREIGN KEY (`fkFuncionario`) REFERENCES `funcionario` (`idFuncionario`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fkConsultaPaciente` FOREIGN KEY (`fkPaciente`) REFERENCES `paciente` (`idPaciente`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `cronograma`
+--
+ALTER TABLE `cronograma`
+  ADD CONSTRAINT `fkCronogramaFuncionario` FOREIGN KEY (`fkFuncionario`) REFERENCES `funcionario` (`idFuncionario`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fkCronogramaPaciente` FOREIGN KEY (`fkPaciente`) REFERENCES `paciente` (`idPaciente`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `endereco`
 --
 ALTER TABLE `endereco`
   ADD CONSTRAINT `fkPessoaEndereco` FOREIGN KEY (`fkPessoa`) REFERENCES `pessoa` (`idPessoa`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Limitadores para a tabela `funcionario`
+-- Constraints for table `funcionario`
 --
 ALTER TABLE `funcionario`
   ADD CONSTRAINT `fkPessoaFuncionario` FOREIGN KEY (`fkPessoa`) REFERENCES `pessoa` (`idPessoa`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Limitadores para a tabela `paciente`
+-- Constraints for table `paciente`
 --
 ALTER TABLE `paciente`
-  ADD CONSTRAINT `fkPessoaPaciente` FOREIGN KEY (`fkPessoa`) REFERENCES `pessoa` (`idPessoa`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fkPessoaPaciente` FOREIGN KEY (`fkPessoa`) REFERENCES `pessoa` (`idPessoa`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
